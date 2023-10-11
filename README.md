@@ -2,6 +2,18 @@
 
 bla bla bla bla bla bla bla 
 
+    -  пока что на разработке
+    -  пока что на разработке
+    -  пока что на разработке
+    -  пока что на разработке
+    -  пока что на разработке
+    -  пока что на разработке
+    -  пока что на разработке
+    -  пока что на разработке
+    -  пока что на разработке
+    -  пока что на разработке
+    -  пока что на разработке
+
 ## Requirements
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.

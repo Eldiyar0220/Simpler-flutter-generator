@@ -1,42 +1,76 @@
-# simpler-flutter-generator README
+# Generator README
 
-bla bla bla bla bla bla bla 
+ gif soon
 
-    -  пока что на разработке
-    -  пока что на разработке
-    -  пока что на разработке
-    -  пока что на разработке
-    -  пока что на разработке
-    -  пока что на разработке
-    -  пока что на разработке
-    -  пока что на разработке
-    -  пока что на разработке
-    -  пока что на разработке
-    -  пока что на разработке
+
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Vscode: ^1.82.0
 
-## Extension Settings
+## Generator 
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+alga kyrgyzstan 😂
+image дээ😂
 
-For example:
+ - Create File ->  simpler_generator_images.yaml
 
+`Generator default types [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]`
+
+```yaml
+# **************************************************************************
+# * ImagesGenerator - Simpler FLutter Generator Extension -
+# **************************************************************************
+
+outputPath: lib/core/constants
+
+groups:
+  - path: assets/images
+    class_name: AppImages
+    types: [ .png, .jpg, .jpeg ]
+    warnings: true
+
+  # - path: assets/langs
+  #   class_name: AppLangs
+  #   types: [ .json ]
+  #   warnings: true
+
+  # - path: assets/flr
+  #   class_name: AppFlr
+  #   types: [ .flr ]
+  #   warnings: true
+
+  # - path: assets/fonts
+  #   class_name: AppFonts
+  #   types: [ .svg, .json ]
+  #   warnings: true
+
+  # - path: assets/rive
+  #   class_name: AppFonts
+  #   types: [ .riv ]
+  #   warnings: true
+```
+
+### Generate Folders
+
+```json 
+"SimplerFlutterGenerator.Generator": "equatable"
+```
 
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
+ - Generate Images 👻😅
+ - Create Folders 👻
 
 ### 0.0.1
 
-Added features X, Y, and Z.
+Initial
 
 ---
- 
+
+## Reference to other extensions
+
+[Simpler Flutter Snippet](https://marketplace.visualstudio.com/items?itemName=Eldiyar-Dev.simpler-flutter-snippets)<br>
+[Simpler Flutter Tasks](https://marketplace.visualstudio.com/items?itemName=Eldiyar-Dev.simpler-flutter-tasks)
+
 **Enjoy!**

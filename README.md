@@ -1,7 +1,10 @@
 # Generator README
 
- gif soon
+<div align="center">
+  <h1>Simple generate Image</h1>
+</div>
 
+![image](images/generator_image.gif)
 
 
 ## Requirements
@@ -11,7 +14,7 @@ Vscode: ^1.82.0
 ## Generator 
 
 alga kyrgyzstan 😂
-image дээ😂
+
 
  - Create File ->  simpler_generator_images.yaml
 

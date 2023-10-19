@@ -11,12 +11,9 @@
 
 Vscode: ^1.82.0
 
-## Generator 
+## Generator
 
-alga kyrgyzstan 😂
-
-
- - Create File ->  simpler_generator_images.yaml
+- Create File ->  simpler_generator_images.yaml
 
 `Generator default types [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]`
 
@@ -58,6 +55,69 @@ groups:
 
 ```json 
 "SimplerFlutterGenerator.Generator": "equatable"
+```
+- Create Architecture ->  simpler_flutter_generator.yaml
+
+`Generator Folders`
+
+```yaml
+
+# showInputBox replacing 
+# For Example:
+#   - NAME_model.dart
+#   - you write "settings" to showInputBox
+#   - before -> 
+#        - NAME_page.dart
+#        - NAME_bloc.dart
+#        - NAME_repository.dart
+#
+#   - after result -> 
+#        - settings_page.dart
+#        - settings_bloc.dart
+#        - settings_repository.dart
+
+
+# ------------------------------------------------------------- start
+generate:
+# --Data------------------------------------------------------
+  - category: data
+    contents:
+      - folder: data_source
+        contents:
+          - file: NAME_local_data_source.dart
+          - file: NAME_remote_data_source.dart
+      - folder: models
+        contents:
+          - file: NAME_model.dart
+      - folder: repositories
+        contents:
+          - file: NAME_repository.dart
+# ---Domain----------------------------------------------------          
+  - category: domain
+    contents:
+      - folder: entities
+        contents:
+          - file: NAME_entity.dart
+      - folder: repositories
+        contents:
+          - file: NAME_repository.dart
+      - folder: usecase
+        contents:
+          - file: NAME_usecase.dart
+# --Presentation-----------------------------------------------
+  - category: presentation
+    contents:
+      - folder: widgets
+      - folder: pages
+        contents:
+          - file: NAME_page.dart
+      - folder: bloc
+        contents:
+          - file: NAME_bloc.dart
+          - file: NAME_event.dart
+          - file: NAME_state.dart
+# ------------------------------------------------------------- end
+
 ```
 
 ### 1.0.0

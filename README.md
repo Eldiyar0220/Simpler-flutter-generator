@@ -120,6 +120,10 @@ generate:
 
 ```
 
+### 1.1.3
+
+ - Generate From Yaml File 👻😅
+
 ### 1.0.0
 
  - Generate Images 👻😅

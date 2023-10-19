@@ -7,10 +7,6 @@
 ![image](images/generator_image.gif)
 
 
-## Requirements
-
-Vscode: ^1.82.0
-
 ## Generator
 
 - Create File ->  simpler_generator_images.yaml
@@ -40,11 +36,6 @@ groups:
   #   types: [ .flr ]
   #   warnings: true
 
-  # - path: assets/fonts
-  #   class_name: AppFonts
-  #   types: [ .svg, .json ]
-  #   warnings: true
-
   # - path: assets/rive
   #   class_name: AppFonts
   #   types: [ .riv ]
@@ -53,10 +44,17 @@ groups:
 
 ### Generate Folders
 
+<div align="center">
+  <h1>Simple generate Image</h1>
+</div>
+
+![image](images/generator_folders.gif)
+
+
 ```json 
 "SimplerFlutterGenerator.Generator": "equatable"
 ```
-- Create Architecture ->  simpler_flutter_generator.yaml
+- Create Architecture ->  simpler_generator_folders.yaml
 
 `Generator Folders`
 
@@ -118,8 +116,12 @@ generate:
           - file: NAME_state.dart
 # ------------------------------------------------------------- end
 
-
 ```
+
+
+## Requirements
+
+Vscode: ^1.82.0
 
 ### 1.1.3
 
@@ -141,4 +143,4 @@ Initial
 [Simpler Flutter Snippet](https://marketplace.visualstudio.com/items?itemName=Eldiyar-Dev.simpler-flutter-snippets)<br>
 [Simpler Flutter Tasks](https://marketplace.visualstudio.com/items?itemName=Eldiyar-Dev.simpler-flutter-tasks)
 
-**Enjoy!**
+**Enjoy!** 😁

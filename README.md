@@ -91,7 +91,7 @@ generate:
           - file: NAME_model.dart
       - folder: repositories
         contents:
-          - file: NAME_repository.dart
+          - file: NAME_repository_impl.dart
 # ---Domain----------------------------------------------------          
   - category: domain
     contents:
@@ -117,6 +117,7 @@ generate:
           - file: NAME_event.dart
           - file: NAME_state.dart
 # ------------------------------------------------------------- end
+
 
 ```
 

@@ -59,12 +59,17 @@ groups:
 `Generator Folders`
 
 ```yaml
+# **************************************************************************
+# * ArchitectureGenerator - Simpler FLutter Generator -
+# **************************************************************************
 
+#? --> For Info
 # showInputBox replacing 
 # For Example:
-#   - NAME_model.dart
-#   - you write "settings" to showInputBox
-#   - before -> 
+#
+#   - writing "settings" to showInputBox
+#
+#   - before result -> 
 #        - NAME_page.dart
 #        - NAME_bloc.dart
 #        - NAME_repository.dart
@@ -74,10 +79,35 @@ groups:
 #        - settings_bloc.dart
 #        - settings_repository.dart
 
+# ********************* Created Extension For Fun 😜 ************************
 
-# ------------------------------------------------------------- start
+
+dataSource: false
+
+dataModel: false
+
+dataRepository: false
+
+entityModel: false
+
+domainRepository: false
+
+usecase: false
+
+blocType: equatable
+#* equatable
+#* simpleBloc
+#* freezedBloc
+#* Empty
+
+stateWidget: StateFullWidget
+#* StateFullWidget
+#* StateLessWidget
+#* Empty
+
+# ----M.V.P-------------------------------------------------------> start
 generate:
-# --Data------------------------------------------------------
+# ---Data------------------------------------------------------
   - category: data
     contents:
       - folder: data_source
@@ -102,18 +132,18 @@ generate:
       - folder: usecase
         contents:
           - file: NAME_usecase.dart
-# --Presentation-----------------------------------------------
+# ---Presentation----------------------------------------------
   - category: presentation
     contents:
       - folder: widgets
-      - folder: pages
-        contents:
-          - file: NAME_page.dart
       - folder: bloc
         contents:
           - file: NAME_bloc.dart
           - file: NAME_event.dart
           - file: NAME_state.dart
+      - folder: pages
+        contents:
+          - file: NAME_page.dart
 # ------------------------------------------------------------- end
 
 ```
@@ -122,6 +152,18 @@ generate:
 ## Requirements
 
 Vscode: ^1.82.0
+
+### 1.1.4-5
+
+ - Added dart codes  😅
+    - dataSource:
+    - dataModel:
+    - dataRepository:
+    - entityModel:
+    - domainRepository:
+    - usecase:
+    - blocType:
+    - stateWidget:
 
 ### 1.1.3
 

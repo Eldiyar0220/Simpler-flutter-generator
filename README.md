@@ -1,4 +1,3 @@
-# Generator README
 
 <div align="center">
   <h1>Simple generate Image</h1>
@@ -63,11 +62,13 @@ groups:
     
 
 ```
+<br/>
+<br/>
+<br/>
 
-### Generate Folders
-
+### `Generate Folders` --- ✅
 <div align="center">
-  <h1>Simple generate Image</h1>
+  <h1>Simple generate Folders</h1>
 </div>
 
 ![image](images/generator_folders.gif)
@@ -354,9 +355,13 @@ generate:
         contents:
         - file: NAME_page.dart\
             code: |\
-              ......dart code......\
-              ......dart code......\
-              ......dart code......
+            <!-- <pre> **lalala** </pre> -->
+            &emsp;
+                ......dart code......\
+            &emsp;
+                ......dart code......\
+            &emsp;
+                ......dart code......
 
  make sure that starting from d of code:
 

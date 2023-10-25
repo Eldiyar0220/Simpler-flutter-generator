@@ -350,12 +350,12 @@ generate:
 ### 1.1.7
 
  - Upgraded Folder Generator 🔥
-    - folder: pages
+    - folder: pages\
         contents:
-          - file: NAME_page.dart
-            code: |
-              ......dart code......
-              ......dart code......
+        - file: NAME_page.dart\
+            code: |\
+              ......dart code......\
+              ......dart code......\
               ......dart code......
 
  make sure that starting from d of code:

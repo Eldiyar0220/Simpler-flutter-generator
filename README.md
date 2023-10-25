@@ -13,33 +13,54 @@
 
 `Generator default types [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]`
 
+
+### `Single Path` --- ✅
 ```yaml
 # **************************************************************************
-# * ImagesGenerator - Simpler FLutter Generator Extension -
+# * ImagesGenerator - Simpler FLutter Generator - Enjoy bro 😜👍
 # **************************************************************************
 
-outputPath: lib/core/constants
+outputPath: lib/core/constant
 
 groups:
   - path: assets/images
     class_name: AppImages
-    types: [ .png, .jpg, .jpeg ]
+    types: [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
     warnings: true
 
-  # - path: assets/langs
-  #   class_name: AppLangs
-  #   types: [ .json ]
+  # - path: assets/svg
+  #   class_name: AppSvg
+  #   types: [.svg]
   #   warnings: true
 
-  # - path: assets/flr
-  #   class_name: AppFlr
-  #   types: [ .flr ]
-  #   warnings: true
+```
 
-  # - path: assets/rive
-  #   class_name: AppFonts
-  #   types: [ .riv ]
+### `Multiple path` --- ✅
+```yaml
+
+# **************************************************************************
+# * ImagesGenerator - Simpler FLutter Generator - Enjoy bro 😜👍
+# **************************************************************************
+
+outputPath: lib/core/constant
+
+groups:
+  - path:
+      - assets/images
+      - assets/images/new_images
+      - assets/images/only_icons
+    class_name: AppImages
+    types: [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
+    warnings: true
+
+  # - path: 
+  #     - assets/svg
+  #     - assets/svg/new_svg
+  #   class_name: AppSvg
+  #   types: [.svg]
   #   warnings: true
+    
+
 ```
 
 ### Generate Folders
@@ -148,31 +169,32 @@ generate:
 
 ```
 
+### 1.1.6
 
-## Requirements
-
-Vscode: ^1.82.0
+ - Upgraded Assets Generator 🔥
+    - Added Multiple path ✅
+    - Optimized generating from single path ✅
 
 ### 1.1.4-5
 
- - Added dart codes  😅
-    - dataSource:
-    - dataModel:
-    - dataRepository:
-    - entityModel:
-    - domainRepository:
-    - usecase:
-    - blocType:
-    - stateWidget:
+ - Added dart codes 😅 🧰
+    - dataSource: ✅ 
+    - dataModel: ✅
+    - dataRepository: ✅
+    - entityModel: ✅
+    - domainRepository: ✅
+    - usecase: ✅
+    - blocType: ✅
+    - stateWidget: ✅
 
-### 1.1.3
+### 1.1.3 
 
- - Generate From Yaml File 👻😅
+ - Generate From Yaml File 🔥
 
 ### 1.0.0
 
- - Generate Images 👻😅
- - Create Folders 👻
+ - Generate Assets 🔥 
+ - Create Folders 🔥
 
 ### 0.0.1
 
@@ -184,5 +206,11 @@ Initial
 
 [Simpler Flutter Snippet](https://marketplace.visualstudio.com/items?itemName=Eldiyar-Dev.simpler-flutter-snippets)<br>
 [Simpler Flutter Tasks](https://marketplace.visualstudio.com/items?itemName=Eldiyar-Dev.simpler-flutter-tasks)
+
+
+## Requirements
+
+Vscode: ^1.82.0
+
 
 **Enjoy!** 😁

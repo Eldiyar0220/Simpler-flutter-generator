@@ -6,26 +6,32 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Released]
 
+### 1.1.6
+
+ - Upgraded Assets Generator 🔥
+    - Added Multiply paths ✅
+    - Optimized generating from single path ✅
+
 ### 1.1.4-5
 
- - Added dart codes  😅
-    - dataSource:
-    - dataModel:
-    - dataRepository:
-    - entityModel:
-    - domainRepository:
-    - usecase:
-    - blocType:
-    - stateWidget:
+ - Added dart codes 😅 🧰
+    - dataSource: ✅ 
+    - dataModel: ✅
+    - dataRepository: ✅
+    - entityModel: ✅
+    - domainRepository: ✅
+    - usecase: ✅
+    - blocType: ✅
+    - stateWidget: ✅
 
-### 1.1.3
+### 1.1.3 
 
- - Generate From Yaml File 👻😅
+ - Generate From Yaml File 🔥
 
 ### 1.0.0
 
- - Generate Images 👻😅
- - Create Folders 👻
+ - Generate Assets 🔥 
+ - Create Folders 🔥
 
 ### 0.0.1
 
@@ -37,5 +43,11 @@ Initial
 
 [Simpler Flutter Snippet](https://marketplace.visualstudio.com/items?itemName=Eldiyar-Dev.simpler-flutter-snippets)<br>
 [Simpler Flutter Tasks](https://marketplace.visualstudio.com/items?itemName=Eldiyar-Dev.simpler-flutter-tasks)
+
+
+## Requirements
+
+Vscode: ^1.82.0
+
 
 **Enjoy!** 😁

@@ -36,6 +36,7 @@ groups:
 ```
 
 ### `Multiple path` --- ✅
+![image](images/image_generator.png)
 ```yaml
 
 # **************************************************************************
@@ -80,6 +81,7 @@ groups:
 `Generator Folders`
 
 ```yaml
+
 # **************************************************************************
 # * ArchitectureGenerator - Simpler FLutter Generator -
 # **************************************************************************
@@ -88,19 +90,45 @@ groups:
 # showInputBox replacing 
 # For Example:
 #
+#---> NAME
+#
 #   - writing "settings" to showInputBox
 #
-#   - before result -> 
+#   - before -> settings
 #        - NAME_page.dart
 #        - NAME_bloc.dart
 #        - NAME_repository.dart
 #
-#   - after result -> 
+#   - after -> 
 #        - settings_page.dart
 #        - settings_bloc.dart
 #        - settings_repository.dart
+#
+#
+#---> LOWER_CASE
+#
+#   - before -> pay_login
+#       - part 'LOWER_CASE_model.freezed.dart';
+#       - part 'LOWER_CASE_model.g.dart';
+#
+#   - after ->
+#       - part 'pay_login_model.freezed.dart';
+#       - part 'pay_login_model.g.dart';
+# 
+# 
+#---> to use Custom Dart Code
+#   - should paste to false
+#       - dataSource
+#       - dataModels
+#       - dataRepository
+#       - entityModels
+#       - domainRepository
+#       - usecase
+#       - stateWidget
+# 
 
 # ********************* Created Extension For Fun 😜 ************************
+
 
 
 dataSource: false
@@ -168,6 +196,169 @@ generate:
 # ------------------------------------------------------------- end
 
 ```
+### `Generator Folders With Custom Dart Code`
+
+```yaml
+
+# **************************************************************************
+# * ArchitectureGenerator - Simpler FLutter Generator -
+# **************************************************************************
+
+#? --> For Info
+# showInputBox replacing 
+# For Example:
+#
+#---> NAME
+#
+#   - writing "settings" to showInputBox
+#
+#   - before -> settings
+#        - NAME_page.dart
+#        - NAME_bloc.dart
+#        - NAME_repository.dart
+#
+#   - after -> 
+#        - settings_page.dart
+#        - settings_bloc.dart
+#        - settings_repository.dart
+#
+#
+#---> LOWER_CASE
+#
+#   - before -> pay_login
+#       - part 'LOWER_CASE_model.freezed.dart';
+#       - part 'LOWER_CASE_model.g.dart';
+#
+#   - after ->
+#       - part 'pay_login_model.freezed.dart';
+#       - part 'pay_login_model.g.dart';
+# 
+# 
+#---> to use Custom Dart Code
+#   - should paste to false
+#       - dataSource
+#       - dataModels
+#       - dataRepository
+#       - entityModels
+#       - domainRepository
+#       - usecase
+#       - stateWidget
+# 
+
+# ********************* Created Extension For Fun 😜 ************************
+
+
+
+dataSource: false
+
+dataModel: false
+
+dataRepository: false
+
+entityModel: false
+
+domainRepository: false
+
+usecase: false
+
+blocType: equatable
+#* equatable
+#* simpleBloc
+#* freezedBloc
+#* Empty
+
+stateWidget: StateFullWidget
+#* StateFullWidget
+#* StateLessWidget
+#* Empty
+
+# ----M.V.P-------------------------------------------------------> start
+generate:
+# ---Data------------------------------------------------------
+  - category: data
+    contents:
+      - folder: data_source
+        contents:
+          - file: NAME_local_data_source.dart
+          - file: NAME_remote_data_source.dart
+      - folder: models
+        contents:
+          - file: NAME_model.dart
+      - folder: repositories
+        contents:
+          - file: NAME_repository_impl.dart
+# ---Domain----------------------------------------------------          
+  - category: domain
+    contents:
+      - folder: entities
+        contents:
+          - file: NAME_entity.dart
+            code: | 
+              class NAMEEntity {}
+      - folder: repositories
+        contents:
+          - file: NAME_repository.dart
+            code: | 
+              class NAMERepository {}
+      - folder: usecase
+        contents:
+          - file: NAME_usecase.dart
+            code: | 
+              class NAMEUseCase {}
+# ---Presentation----------------------------------------------
+  - category: presentation
+    contents:
+      - folder: widgets
+      - folder: bloc
+        contents:
+          - file: NAME_bloc.dart
+          - file: NAME_event.dart
+          - file: NAME_state.dart
+      - folder: pages
+        contents:
+          - file: NAME_page.dart
+            code: |
+              import 'package:flutter/material.dart';
+
+              class NAMEPage extends StatefulWidget {
+                  const NAMEPage({super.key});
+                  @override
+                  State<NAMEPage> createState() => _NAMEPageState();
+              }// now Eldiyar
+
+              class _NAMEPageState extends State<NAMEPage> {
+                @override
+                Widget build(BuildContext context) {
+                  return Scaffold(
+                    appBar: AppBar(
+                      title: const Text('NAMEPage'),
+                    ),
+                    body: Column(
+                      children: [
+                        Container(),
+                      ],
+                    ),
+                  );
+                }
+              }
+        
+# ------------------------------------------------------------- end
+
+
+```
+
+### 1.1.7
+
+ - Upgraded Folder Generator 🔥
+    - folder: pages
+        contents:
+          - file: NAME_page.dart
+            code: |
+              ......dart code......
+              ......dart code......
+              ......dart code......
+
+ make sure that starting from d of code:
 
 ### 1.1.6
 

@@ -36,7 +36,7 @@ groups:
 ```
 
 ### `Multiple path` --- ✅
-![image](images/image_generator.png)
+![image](images/image_generator_new.png)
 ```yaml
 
 # **************************************************************************

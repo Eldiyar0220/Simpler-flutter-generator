@@ -4,14 +4,14 @@
   <h1>Simple generate Image</h1>
 </div>
 
-![image](images/generator_image.gif)
+![image](images/generator_image_gii.gif)
 
 
 ## Generator
 
 - Create File ->  simpler_generator_images.yaml
 
-`Generator default types [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]`
+Generator default types [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
 
 
 ### `Single Path` --- ✅

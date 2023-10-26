@@ -1,8 +1,9 @@
 ### Table of Contents
 A set of helpful Flutter and Dart commands for day to day Flutter development.
-- [Generator](###Generator-Assets)
-  * [Single Path](#single-path)
-  * [Multiple Path](#multiple-path)
+- [Generator](#)
+    - [Assets](#assets)
+        * [Single Path](#single-path)
+        * [Multiple Path](#multiple-path)
 
 
 <div align="center">
@@ -12,7 +13,7 @@ A set of helpful Flutter and Dart commands for day to day Flutter development.
 ![image](images/generator_image_gii.gif)
 
 
-### Generator Assets
+### Assets
 
 - Create File ->  simpler_generator_images.yaml
 

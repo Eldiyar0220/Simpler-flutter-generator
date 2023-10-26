@@ -1,3 +1,8 @@
+### Table of Contents
+A set of helpful Flutter and Dart commands for day to day Flutter development.
+- [Generator](#)
+  * [Single Path](#single-path)
+
 
 <div align="center">
   <h1>Simple generate Image</h1>
@@ -6,14 +11,14 @@
 ![image](images/generator_image_gii.gif)
 
 
-## Generator
+## Generator Assets
 
 - Create File ->  simpler_generator_images.yaml
 
-Generator default types [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
+- Generator default types [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
 
-
-### `Single Path` --- ✅
+<!-- TOC --><a name="single-path"></a>
+### Single Path --- ✅
 ```yaml
 # **************************************************************************
 # * ImagesGenerator - Simpler FLutter Generator - Enjoy bro 😜👍
@@ -33,7 +38,6 @@ groups:
   #   warnings: true
 
 ```
-
 ### `Multiple path` --- ✅
 ![image](images/image_generator_new.png)
 ```yaml
@@ -80,7 +84,7 @@ groups:
 - Create Architecture ->  simpler_generator_folders.yaml
 
 `Generator Folders`
-
+<!-- TOC --><a name="#"></a>
 ```yaml
 
 # **************************************************************************
@@ -170,7 +174,7 @@ generate:
       - folder: repositories
         contents:
           - file: NAME_repository_impl.dart
-# ---Domain----------------------------------------------------          
+#---Domain----------------------------------------------------          
   - category: domain
     contents:
       - folder: entities
@@ -197,7 +201,7 @@ generate:
 # ------------------------------------------------------------- end
 
 ```
-### `Generator Folders With Custom Dart Code`
+### `Generator Folders With Custom Dart Code Variant 1`
 
 ```yaml
 
@@ -343,6 +347,191 @@ generate:
                 }
               }
         
+# ------------------------------------------------------------- end
+
+
+```
+### `Generator Folders With Custom Dart Code Variant 2`
+
+```yaml
+ 
+# **************************************************************************
+# * ArchitectureGenerator - Simpler FLutter Generator -
+# **************************************************************************
+
+#? --> For Info
+# showInputBox replacing 
+# For Example:
+#
+#   - writing "settings" to showInputBox
+#
+#   - before result -> 
+#        - NAME_page.dart
+#        - NAME_bloc.dart
+#        - NAME_repository.dart
+#
+#   - after result -> 
+#        - settings_page.dart
+#        - settings_bloc.dart
+#        - settings_repository.dart
+
+# ********************* Created Extension For Fun 😜 ************************
+
+
+dataSource: false
+
+dataModel: false
+
+dataRepository: false
+
+entityModel: false
+
+domainRepository: false
+
+usecase: false
+
+blocType: equatable
+#* equatable
+#* simpleBloc
+#* freezedBloc
+#* Empty
+
+stateWidget: StateFullWidget
+#* StateFullWidget
+#* StateLessWidget
+#* Empty
+
+# ----M.V.P-------------------------------------------------------> start
+generate:
+# ---Data------------------------------------------------------
+  - category: data
+    contents:
+      - folder: data_source
+        contents:
+          - file: NAME_local_data_source.dart
+            code: |
+              abstract class NAMELocalDataSource {}
+
+              class NAMELocalDataSourceImpl implements NAMELocalDataSource {}
+
+          - file: NAME_remote_data_source.dart
+            code: |
+              abstract class NAMERemoteDataSource {}
+
+              class NAMERemoteDataSourceImpl implements NAMERemoteDataSource {}
+
+      - folder: models
+        contents:
+          - file: NAME_model.dart
+            code: |
+                class NAMEModel extends NAMEEntity {
+                  NAMEModel({
+                    required String data,
+                  }) : super(data: data);
+
+                  factory NAMEModel.fromJson(Map<String, dynamic> json) {
+                    return NAMEModel(
+                      data: json['data'],
+                    );
+                  }
+
+                  Map<String, dynamic> toJson() {
+                    return {
+                      'data': data,
+                    };
+                  }
+                }
+      - folder: repositories
+        contents:
+          - file: NAME_repository_impl.dart
+            code: | 
+                class NAMERepositoryImpl implements NAMERepository {
+                  NAMERepositoryImpl({
+                    required this.remoteDataSource,
+                    required this.localDataSource,
+                  });
+                  final NAMERemoteDataSource remoteDataSource;
+                  final NAMELocalDataSource localDataSource;
+
+                  @override
+                  Future<void> exampleFuncRepo() {
+                    // TODO: implement exampleFuncRepo
+                    throw UnimplementedError();
+                  }
+                }
+
+# ---Domain----------------------------------------------------          
+  - category: domain
+    contents:
+      - folder: entities
+        contents:
+          - file: NAME_entity.dart
+            code: | 
+              import 'package:equatable/equatable.dart';
+
+              class NAMEEntity extends Equatable {
+                NAMEEntity({
+                  required this.data,
+                });
+                final String data;
+
+                @override
+                List<Object> get props => [data];
+              }
+
+      - folder: repositories
+        contents:
+          - file: NAME_repository.dart
+            code: | 
+              abstract class NAMERepository {}
+      - folder: usecase
+        contents:
+          - file: NAME_usecase.dart
+            code: | 
+              class NAMEUsecase {
+                NAMEUsecase({required this.repository});
+                final NAMERepository repository;
+              }
+
+# ---Presentation----------------------------------------------
+  - category: presentation
+    contents:
+      - folder: widgets
+      - folder: bloc
+        contents:
+          - file: NAME_bloc.dart
+          - file: NAME_event.dart
+          - file: NAME_state.dart
+      - folder: pages
+        contents:
+          - file: NAME_page.dart
+            code: |
+              import 'package:flutter/material.dart';
+
+              class NAMEPage extends StatefulWidget {
+                const NAMEPage({super.key});
+                @override
+                State<NAMEPage> createState() => _NAMEPageState();
+              }
+
+              class _NAMEPageState extends State<NAMEPage> {
+                @override
+                Widget build(BuildContext context) {
+                  return Scaffold(
+                    appBar: AppBar(
+                      title: const Text('NAMEPage'),
+                    ),
+                    body: Column(
+                      children: [
+                        Container(),
+                      ],
+                    ),
+                  );
+                }
+              }
+
+
+
 # ------------------------------------------------------------- end
 
 

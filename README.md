@@ -2,6 +2,7 @@
 A set of helpful Flutter and Dart commands for day to day Flutter development.
 - [Generator](#)
   * [Single Path](#single-path)
+  * [Multiple Path](#Multiple)
 
 
 <div align="center">
@@ -38,7 +39,7 @@ groups:
   #   warnings: true
 
 ```
-### `Multiple path` --- ✅
+### Multiple path --- ✅
 ![image](images/image_generator_new.png)
 ```yaml
 

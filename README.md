@@ -2,14 +2,14 @@
 A set of helpful Flutter and Dart commands for day to day Flutter development.
 - [Generator](#)
 
-    - [Assets](#assets)
+    - [Assets]
         * [Single Path](#Generator-Image-Single-Path)
         * [Multiple Path](#Generator-Image-Multiple-Path)
 
-    - [Generate Architecture Simple](#assets)
+    - [Generate Architecture Simple]
         * [Simple Generator Folders](#Simple-generate-Folders)
 
-    - [Generate Architecture with Code](#assets)
+    - [Generate Architecture with Code]
         * [Code Variant 1](#Generate-Folders-with-Code-Variant-1)
         * [Code Variant 2](#Generate-Folders-with-Code-Variant-2)
 

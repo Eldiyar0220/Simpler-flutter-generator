@@ -1,3 +1,5 @@
+### Assets
+![image](images/assets_image_read_me.png)
 ### Table of Contents
 A set of helpful Flutter and Dart commands for day to day Flutter development.
 - Generator
@@ -46,8 +48,7 @@ groups:
 
 ```
 ### Generator Image Multiple Path
-### Multiple path --- ✅
-![image](images/assets_image_read_me.png)
+### `Multiple path` --- ✅
 ```yaml
 
 # **************************************************************************

@@ -47,7 +47,7 @@ groups:
 ```
 ### Generator Image Multiple Path
 ### Multiple path --- ✅
-![image](images/image_generator_new.png)
+![image](images/assets_image_read_me.png)
 ```yaml
 
 # **************************************************************************

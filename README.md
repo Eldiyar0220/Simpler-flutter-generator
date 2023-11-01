@@ -117,6 +117,17 @@ groups:
 #        - settings_bloc.dart
 #        - settings_repository.dart
 #
+#---> funcCase
+#
+#   - writing "get_test" to showInputBox
+#   - before -> get_test
+#        Future<void> funcCase()
+#
+#   - after -> 
+#        Future<void> getTest()
+#
+#
+#
 #
 #---> LOWER_CASE
 #
@@ -141,7 +152,6 @@ groups:
 # 
 
 # ********************* Created Extension For Fun 😜 ************************
-
 
 
 dataSource: false
@@ -235,6 +245,17 @@ generate:
 #        - settings_page.dart
 #        - settings_bloc.dart
 #        - settings_repository.dart
+#
+#---> funcCase
+#
+#   - writing "get_test" to showInputBox
+#   - before -> get_test
+#        Future<void> funcCase()
+#
+#   - after -> 
+#        Future<void> getTest()
+#
+#
 #
 #
 #---> LOWER_CASE
@@ -547,13 +568,13 @@ generate:
 
 ```
 
-### 1.1.7
+### 1.1.7-8
 
  - Upgraded Folder Generator 🔥
     - folder: pages\
         contents:
         - file: NAME_page.dart\
-            code: |\
+            code: |
             <!-- <pre> **lalala** </pre> -->
             &emsp;
                 ......dart code......\

@@ -39,7 +39,8 @@ groups:
   - path: assets/images
     class_name: AppImages
     types: [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
-    warnings: true
+    checkUnusedVariables: true
+    checkUnusedAssets: true
 
   # - path: assets/svg
   #   class_name: AppSvg
@@ -65,6 +66,8 @@ groups:
     class_name: AppImages
     types: [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
     warnings: true
+    checkUnusedVariables: true
+    checkUnusedAssets: true
 
   # - path: 
   #     - assets/svg
@@ -87,7 +90,8 @@ groups:
 
 
 ```json 
-"SimplerFlutterGenerator.Generator": "equatable"
+  "SimplerFlutterGenerator.createStateWidget": true,
+  "SimplerFlutterGenerator.stateWidget": "StateLessWidget",
 ```
 - Create Architecture ->  simpler_generator_folders.yaml
 
@@ -166,16 +170,6 @@ domainRepository: false
 
 usecase: false
 
-blocType: equatable
-#* equatable
-#* simpleBloc
-#* freezedBloc
-#* Empty
-
-stateWidget: StateFullWidget
-#* StateFullWidget
-#* StateLessWidget
-#* Empty
 
 # ----M.V.P-------------------------------------------------------> start
 generate:
@@ -296,16 +290,6 @@ domainRepository: false
 
 usecase: false
 
-blocType: equatable
-#* equatable
-#* simpleBloc
-#* freezedBloc
-#* Empty
-
-stateWidget: StateFullWidget
-#* StateFullWidget
-#* StateLessWidget
-#* Empty
 
 # ----M.V.P-------------------------------------------------------> start
 generate:
@@ -421,16 +405,6 @@ domainRepository: false
 
 usecase: false
 
-blocType: equatable
-#* equatable
-#* simpleBloc
-#* freezedBloc
-#* Empty
-
-stateWidget: StateFullWidget
-#* StateFullWidget
-#* StateLessWidget
-#* Empty
 
 # ----M.V.P-------------------------------------------------------> start
 generate:
@@ -568,7 +542,21 @@ generate:
 
 ```
 
-### 1.1.7-8
+### 1.2.0
+
+ - Upgraded Assets Generator 🔥
+    - added checking unused Variables
+    - added checking unused Assets
+ - - Upgraded Folder Generator 🔥
+    - removed 
+      - blocType
+      - stateWidget
+    - added to settings json
+      -  "SimplerFlutterGenerator.createStateWidget": true,
+      -  "SimplerFlutterGenerator.stateWidget": "StateLessWidget",
+
+ make sure that starting from d of code:
+### 1.1.7-8-9
 
  - Upgraded Folder Generator 🔥
     - folder: pages\

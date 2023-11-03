@@ -46,6 +46,8 @@ groups:
   #   class_name: AppSvg
   #   types: [.svg]
   #   warnings: true
+  #   checkUnusedVariables: true
+  #   checkUnusedAssets: true
 
 ```
 ### Generator Image Multiple Path
@@ -75,6 +77,8 @@ groups:
   #   class_name: AppSvg
   #   types: [.svg]
   #   warnings: true
+  #   checkUnusedVariables: true
+  #   checkUnusedAssets: true
     
 
 ```

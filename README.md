@@ -39,15 +39,15 @@ groups:
   - path: assets/images
     class_name: AppImages
     types: [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
-    checkUnusedVariables: true
-    checkUnusedAssets: true
+    checkUnusedVariables: false
+    checkUnusedAssets: false
 
   # - path: assets/svg
   #   class_name: AppSvg
   #   types: [.svg]
   #   warnings: true
-  #   checkUnusedVariables: true
-  #   checkUnusedAssets: true
+  #   checkUnusedVariables: false
+  #   checkUnusedAssets: false
 
 ```
 ### Generator Image Multiple Path
@@ -68,8 +68,8 @@ groups:
     class_name: AppImages
     types: [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
     warnings: true
-    checkUnusedVariables: true
-    checkUnusedAssets: true
+    checkUnusedVariables: false
+    checkUnusedAssets: false
 
   # - path: 
   #     - assets/svg
@@ -77,8 +77,8 @@ groups:
   #   class_name: AppSvg
   #   types: [.svg]
   #   warnings: true
-  #   checkUnusedVariables: true
-  #   checkUnusedAssets: true
+  #   checkUnusedVariables: false
+  #   checkUnusedAssets: false
     
 
 ```

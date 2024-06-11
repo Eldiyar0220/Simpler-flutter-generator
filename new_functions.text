@@ -1,0 +1,57 @@
+
+async function executeFlutterCommand(command, workingDirectory, fileNames) {
+  const startTime = Date.now();  // Record start time
+
+  try {
+    await vscode.window.withProgress({
+      location: vscode.ProgressLocation.Notification,
+      title: "Running build_runner",
+      cancellable: true
+    }, async (progress, token) => {
+      let showFilesItem = { title: "Show Files", isButton: true };
+      progress.report({ message: "Starting build...", increment: 0, button: showFilesItem });
+
+      await new Promise((resolve, reject) => {
+        const process = exec(command, { cwd: workingDirectory });
+        process.stdout.on('data', (data) => {
+          console.log(`Command output: ${data}`);
+          progress.report({ message: data.trim(), increment: 10 });
+        });
+
+        process.stderr.on('data', (data) => {
+          console.error(`Error output: ${data}`);
+          vscode.window.showErrorMessage(`Error output: ${data}`);
+          reject(new Error(data));
+        });
+
+        process.on('close', (code) => {
+          if (code !== 0) {
+            console.log(`Command exited with code ${code}`);
+            reject(new Error(`Command exited with code ${code}`));
+          } else {
+            const endTime = Date.now();  // Record end time
+            const timeTaken = ((endTime - startTime) / 1000).toFixed(2);  // Calculate time taken in seconds
+            let message = `Build completed successfully in ${timeTaken} seconds! ✅`;
+            vscode.window.showInformationMessage(message, showFilesItem).then(selection => {
+              if (selection && selection.title === showFilesItem.title) {
+                // Handle "Show Files" button click
+                // Replace with your logic to show files
+                vscode.window.showInformationMessage('Show Files button clicked');
+              }
+            });
+            resolve();
+          }
+        });
+
+        token.onCancellationRequested(() => {
+          process.kill();
+          vscode.window.showWarningMessage("Build was cancelled");
+          resolve();
+        });
+      });
+    });
+  } catch (error) {
+    console.error(`Error: ${error}`);
+    vscode.window.showErrorMessage(`Error: ${error.message}`);
+  }
+}

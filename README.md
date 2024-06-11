@@ -546,6 +546,12 @@ generate:
 
 ```
 
+### 1.2.3
+
+ - added Build Runner With Filter [Build Runner with Filter 🔎✅]
+  - on actions
+  - on editor focus 
+
 ### 1.2.0
 
  - Upgraded Assets Generator 🔥

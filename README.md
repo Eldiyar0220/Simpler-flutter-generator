@@ -546,7 +546,7 @@ generate:
 
 ```
 
-### 1.2.3
+### 1.2.3-4
 
  - added Build Runner With Filter [Build Runner with Filter 🔎✅]
   - on actions

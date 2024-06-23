@@ -6,6 +6,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Released]
 
+### 1.2.5
+ - added build runner with filter on package annotation
+   - SimplerFlutterGenerator.enableCodeLens: true
 ### 1.1.6
 
  - Upgraded Assets Generator 🔥

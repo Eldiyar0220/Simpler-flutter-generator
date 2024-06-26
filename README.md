@@ -546,9 +546,10 @@ generate:
 
 ```
 
-### 1.2.5
+### 1.2.5-6
  - added build runner with filter on package annotation
-   - SimplerFlutterGenerator.enableCodeLens: true
+   - SimplerFlutterGenerator.enableCodeLens: true/false
+
 ### 1.2.3-4
 
  - added Build Runner With Filter [Build Runner with Filter 🔎✅]

@@ -6,6 +6,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Released]
 
+### 1.2.8
+ - Changed template of Generate Assets 
+ - removed outputPath to generateAll by default false, if generateAll true so will ask the modal dialog
+ - to group added outputPath [now everyone will have outputPath]
+### New Format see on README
+
 ### 1.2.7
  - removed emoticons on context menu 
   - editor/context

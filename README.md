@@ -546,6 +546,17 @@ generate:
 
 ```
 
+### 1.2.7
+ - removed emoticons on context menu 
+  - editor/context
+  - explorer/context
+ - added toggle on editor/context
+  - SimplerFlutterGenerator.enableCodeLens
+  - updated ui on pubSpec codeLens
+  - added version of packages 
+    - latest ✔︎
+    - new version ⤴️
+
 ### 1.2.5-6
  - added build runner with filter on package annotation
    - SimplerFlutterGenerator.enableCodeLens: true/false

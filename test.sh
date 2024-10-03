@@ -49,7 +49,7 @@ echo "Вывод команды git commit: $output"
 echo "Код завершения git commit: $git_exit_code"
 
 # Проверяем код завершения
-if [ $git_exit_code -ne 0 ]; then
+if [ $git_exit_code -ne 0 ]; then 
     echo "Ошибка при выполнении git commit: $output"
 
     # Проверяем наличие строки о необходимости установки upstream

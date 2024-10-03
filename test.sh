@@ -30,34 +30,33 @@ echo "Запускаем скрипт.....:"
 read -p "Напишите коммент: " git_comment
 
 # Задержка перед началом
-sleep 1  # 300 миллисекунд
+sleep 0.3  # 300 миллисекунд
 
 # Выполнение git add с задержкой
 git add .
-echo "Сейчас будем запускать git commit с комментарием: '$git_comment'"
-sleep 3  # Задержка на 3 секунду
+sleep 1  # Задержка на 1 секунду
+
 # Уведомление перед выполнением git commit
+echo "Сейчас будем запускать git commit с комментарием: '$git_comment'"
 
-# Выполнение git commit в фоновом режиме
-git commit -m "$git_comment" &
+# Выполнение git commit и захват вывода
+output=$(git commit -m "$git_comment" 2>&1)  # Захватываем вывод команды
+git_exit_code=$?  # Сохраняем код завершения
 
-echo "Запушим в Git"
-sleep 5
-git push
+# Проверяем код завершения
+if [ $git_exit_code -ne 0 ]; then
+    echo "Ошибка при выполнении git commit: $output"
 
-
-
-# Захватываем PID процесса команды
-git_pid=$!
-
-# Пока команда выполняется, показываем проценты выполнения
-show_loading_with_percentage $git_pid
-
-# Ожидание завершения команды
-wait $git_pid
-
-# Сообщение о завершении
-echo "Команда git завершена!"
-
-
-# git reset --soft HEAD~
+    # Проверяем наличие строки о необходимости установки upstream
+    if [[ $output == *"no upstream branch"* ]]; then
+        # Извлекаем имя текущей ветки
+        current_branch=$(git rev-parse --abbrev-ref HEAD)
+        
+        # Формируем и выполняем команду push
+        push_command="git push --set-upstream origin $current_branch"
+        echo "Выполняем: $push_command"
+        eval $push_command  # Выполняем команду push
+    fi
+else
+    echo "Команда git завершена успешно!"
+fi

@@ -77,8 +77,8 @@ else
 fi
 
 
-read -p "---> Хотите выполнить следующую команду: git checkout DEV и git pull? (y/n): " user_input
-    echo "---> Сейчас будем Прыгать на DEV и Пуллится"
+read -p "\033[33m---> Хотите выполнить следующую команду: git checkout DEV и git pull? (y/n): " user_input
+    echo "\033[33m---> Сейчас будем Прыгать на DEV и Пуллится"
     sleep 3  # Задержка на 3 секунду
     if [[ $user_input == "y" || $user_input == "Y" ]]; then
         echo "---> Выполняем: git checkout DEV"

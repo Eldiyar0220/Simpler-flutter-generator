@@ -63,7 +63,7 @@ if [ $git_exit_code -ne 0 ]; then
         # Запрашиваем у пользователя, хочет ли он выполнить команду push
         read -p "Хотите выполнить следующую команду: $push_command? (y/n): " user_input
         if [[ $user_input == "y" || $user_input == "Y" ]]; then
-            echo "\033[32mВыполняем: $push_command"
+            echo "\033[33mВыполняем: $push_command"
             eval $push_command  # Выполняем команду push
         else
             echo "\033[32mКоманда push не выполнена. Завершение скрипта."
@@ -71,6 +71,6 @@ if [ $git_exit_code -ne 0 ]; then
     else
         echo "\033[32mПроизошла другая ошибка при выполнении git push."
     fi 
-else
+else 
     echo "Команда git завершена успешно!"
 fi

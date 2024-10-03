@@ -33,12 +33,13 @@ A set of helpful Flutter and Dart commands for day to day Flutter development.
 # * ImagesGenerator - Simpler FLutter Generator - Enjoy bro 😜👍
 # **************************************************************************
 
-outputPath: lib/core/constant
+generateAll: true # default [true]
 
 groups:
   - path: assets/images
     class_name: AppImages
     types: [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
+    outputPath: lib/core/constant
     checkUnusedVariables: false
     checkUnusedAssets: false
 
@@ -58,7 +59,7 @@ groups:
 # * ImagesGenerator - Simpler FLutter Generator - Enjoy bro 😜👍
 # **************************************************************************
 
-outputPath: lib/core/constant
+generateAll: true # default [true]
 
 groups:
   - path:
@@ -67,6 +68,7 @@ groups:
       - assets/images/only_icons
     class_name: AppImages
     types: [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
+    outputPath: lib/core/constant
     warnings: true
     checkUnusedVariables: false
     checkUnusedAssets: false

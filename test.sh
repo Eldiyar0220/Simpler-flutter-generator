@@ -39,8 +39,9 @@ sleep 1  # Задержка на 1 секунду
 # Уведомление перед выполнением git commit
 echo "Сейчас будем запускать git commit с комментарием: '$git_comment'"
 
+git commit -m "git_comment"
 # Выполнение git commit и захват вывода
-output=$(git commit -m "$git_comment" 2>&1)  # Захватываем вывод команды
+output=$(git push 2>&1)  # Захватываем вывод команды
 git_exit_code=$?  # Сохраняем код завершения
 
 # Вывод для отладки

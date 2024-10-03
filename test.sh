@@ -45,6 +45,8 @@ echo "Запушим в Git"
 sleep 5
 git push
 
+
+
 # Захватываем PID процесса команды
 git_pid=$!
 

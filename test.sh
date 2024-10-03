@@ -42,7 +42,7 @@ sleep 3  # Задержка на 3 секунду
 git commit -m "$git_comment" &
 
 echo "Запушим в Git"
-sleep 3
+sleep 5
 git push
 
 # Захватываем PID процесса команды

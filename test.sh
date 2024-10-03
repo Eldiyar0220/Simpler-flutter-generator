@@ -26,7 +26,7 @@ show_loading_with_percentage() {
 }
 
 # Запрос комментария для коммита
-echo "Запускаем скрипт.....:"
+echo "\033[32mЗапускаем скрипт.....:"
 read -p "Напишите коммент: " git_comment
 
 # Задержка перед началом
@@ -37,7 +37,7 @@ git add .
 sleep 1  # Задержка на 1 секунду
 
 # Уведомление перед выполнением git commit
-echo "Сейчас будем запускать git commit с комментарием: '$git_comment'"
+echo "\033[32mСейчас будем запускать git commit с комментарием: '$git_comment'"
 
 git commit -m "git_comment"
 # Выполнение git commit и захват вывода
@@ -45,12 +45,12 @@ output=$(git push 2>&1)  # Захватываем вывод команды
 git_exit_code=$?  # Сохраняем код завершения
 
 # Вывод для отладки
-echo "Вывод команды git commit: $output"
-echo "Код завершения git commit: $git_exit_code"
+echo "\033[32mВывод команды git commit: $output"
+echo "\033[32mКод завершения git commit: $git_exit_code"
 
 # Проверяем код завершения
 if [ $git_exit_code -ne 0 ]; then 
-    echo "Ошибка при выполнении git push: $output"
+    echo "\033[32mОшибка при выполнении git push"
 
     # Проверяем наличие строки о необходимости установки upstream
     if [[ $output == *"no upstream branch"* ]]; then
@@ -63,13 +63,13 @@ if [ $git_exit_code -ne 0 ]; then
         # Запрашиваем у пользователя, хочет ли он выполнить команду push
         read -p "Хотите выполнить следующую команду: $push_command? (y/n): " user_input
         if [[ $user_input == "y" || $user_input == "Y" ]]; then
-            echo "Выполняем: $push_command"
+            echo "\033[32mВыполняем: $push_command"
             eval $push_command  # Выполняем команду push
         else
-            echo "Команда push не выполнена. Завершение скрипта."
+            echo "\033[32mКоманда push не выполнена. Завершение скрипта."
         fi
     else
-        echo "Произошла другая ошибка при выполнении git push."
+        echo "\033[32mПроизошла другая ошибка при выполнении git push."
     fi 
 else
     echo "Команда git завершена успешно!"

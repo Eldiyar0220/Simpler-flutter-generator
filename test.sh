@@ -26,36 +26,65 @@ show_loading_with_percentage() {
 }
 
 # Запрос комментария для коммита
-echo "Запускаем скрипт.....:"
+echo "\033[32mЗапускаем скрипт.....:"
 read -p "Напишите коммент: " git_comment
 
 # Задержка перед началом
-sleep 1  # 300 миллисекунд
+sleep 0.3  # 300 миллисекунд
 
 # Выполнение git add с задержкой
 git add .
-echo "Сейчас будем запускать git commit с комментарием: '$git_comment'"
-sleep 3  # Задержка на 3 секунду
+sleep 1  # Задержка на 1 секунду
+
 # Уведомление перед выполнением git commit
+echo "\033[32mСейчас будем запускать git commit с комментарием: '$git_comment'"
 
-# Выполнение git commit в фоновом режиме
-git commit -m "$git_comment" &
+sleep 3  # Задержка на 1 секунду
+git commit -m "$git_comment"
+# Выполнение git commit и захват вывода
+output=$(git push 2>&1)  # Захватываем вывод команды
+git_exit_code=$?  # Сохраняем код завершения
 
-echo "Запушим в Git"
-sleep 5
-git push
+# Вывод для отладки
+echo "Вывод команды git commit: $output"
+echo "Код завершения git commit: $git_exit_code"
 
-# Захватываем PID процесса команды
-git_pid=$!
+# Проверяем код завершения
+if [ $git_exit_code -ne 0 ]; then 
+    echo "\033[32mОшибка при выполнении git push"
 
-# Пока команда выполняется, показываем проценты выполнения
-show_loading_with_percentage $git_pid
+    # Проверяем наличие строки о необходимости установки upstream
+    if [[ $output == *"no upstream branch"* ]]; then
+        # Извлекаем имя текущей ветки
+        current_branch=$(git rev-parse --abbrev-ref HEAD)
+        
+        # Формируем команду push
+        push_command="git push --set-upstream origin $current_branch"
 
-# Ожидание завершения команды
-wait $git_pid
+        # Запрашиваем у пользователя, хочет ли он выполнить команду push
+        read -p "Хотите выполнить следующую команду: $push_command? (y/n): " user_input
+        if [[ $user_input == "y" || $user_input == "Y" ]]; then
+            echo "---> Выполняем: $push_command"
+            eval $push_command  # Выполняем команду push
+        else
+            echo "\033[32mКоманда push не выполнена. Завершение скрипта."
+        fi
+    else
+        echo "\033[32mПроизошла другая ошибка при выполнении git push."
+    fi 
+else 
+    echo "Команда git завершена успешно!"
+fi
 
-# Сообщение о завершении
-echo "Команда git завершена!"
 
-
-# git reset --soft HEAD~
+read -p "---> Хотите выполнить следующую команду: git checkout DEV и git pull? (y/n): " user_input
+    echo "\033[33m---> Сейчас будем Прыгать на DEV и Пуллится"
+    sleep 3  # Задержка на 3 секунду
+    if [[ $user_input == "y" || $user_input == "Y" ]]; then
+        echo "\033[33m---> Выполняем: git checkout DEV"
+        git checkout main
+        sleep 1  # Задержка на 3 секунду
+        git pull --all
+    else
+        echo "---> Отменена git checkout DEV"
+    fi

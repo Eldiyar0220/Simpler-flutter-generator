@@ -63,7 +63,7 @@ if [ $git_exit_code -ne 0 ]; then
         else
             echo "Команда push не выполнена. Завершение скрипта."
         fi
-    fi
+    fi 
 else
     echo "Команда git завершена успешно!"
 fi

@@ -52,10 +52,17 @@ if [ $git_exit_code -ne 0 ]; then
         # Извлекаем имя текущей ветки
         current_branch=$(git rev-parse --abbrev-ref HEAD)
         
-        # Формируем и выполняем команду push
+        # Формируем команду push
         push_command="git push --set-upstream origin $current_branch"
-        echo "Выполняем: $push_command"
-        eval $push_command  # Выполняем команду push
+
+        # Запрашиваем у пользователя, хочет ли он выполнить команду push
+        read -p "Хотите выполнить следующую команду: $push_command? (y/n): " user_input
+        if [[ $user_input == "y" || $user_input == "Y" ]]; then
+            echo "Выполняем: $push_command"
+            eval $push_command  # Выполняем команду push
+        else
+            echo "Команда push не выполнена. Завершение скрипта."
+        fi
     fi
 else
     echo "Команда git завершена успешно!"

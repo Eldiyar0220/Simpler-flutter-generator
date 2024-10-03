@@ -53,7 +53,7 @@ if [ $git_exit_code -ne 0 ]; then
         current_branch=$(git rev-parse --abbrev-ref HEAD)
         
         # Формируем команду push
-        push_command="git push --set-upstream origin $current_branch"
+        push_command="git pushsdf $current_branch"
 
         # Запрашиваем у пользователя, хочет ли он выполнить команду push
         read -p "Хотите выполнить следующую команду: $push_command? (y/n): " user_input

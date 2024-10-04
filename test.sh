@@ -84,8 +84,9 @@ user_input2=${user_input2:-'y'}
             push_command="git push --set-upstream origin $current_branch"
 
             # Запрашиваем у пользователя, хочет ли он выполнить команду push
-            read -p "Хотите выполнить следующую команду: $push_command? (y/n): " user_input
-            if [[ $user_input == "y" || $user_input == "Y" ]]; then
+            read -p "Хотите выполнить следующую команду: $push_command? (y/n): " user_input3
+            user_input3=${user_input3:-'y'}
+            if [[ $user_input3 == "y" || $user_input3 == "Y" ]]; then
                 echo "---> Выполняем: $push_command"
                 eval $push_command  # Выполняем команду push
             else

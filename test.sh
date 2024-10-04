@@ -39,6 +39,7 @@ git add .
 
 # Уведомление перед выполнением git commit
 echo "Сейчас будем запускать git commit с комментарием: '$git_comment'"
+echo "git commit -m ${git_comment}"
 sleep 3  # Задержка на 1 секунду
 git commit -m "$git_comment"
 

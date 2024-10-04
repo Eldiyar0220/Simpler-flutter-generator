@@ -45,12 +45,12 @@ git commit -m "$git_comment"
 
 # ------------------------------------------------------ git pull --rebase orign DEV
 
-read -p "---> Хотите выполнить следующую команду: git checkout DEV и git pull? (y/n): " user_input
+read -p "---> Хотите выполнить следующую команду: git pull --rebase orign DEV (y/n): " user_input
 user_input=${user_input:-'y'}
 
     if [[ $user_input == "y" || $user_input == "Y" ]]; then
-        echo "\033[33m---> Актуализировать ветку"
-        echo "\033[33m---> Выполняем: git pull --rebase origin DEV"
+        echo "\033[33m---> Актуализировать ветку\033[0m"
+        echo "\033[33m---> Выполняем: git pull --rebase origin DEV\033[0m"
         sleep 3  # Задержка на 3 секунду
         git pull --rebase origin DEV
     else
@@ -91,10 +91,10 @@ user_input2=${user_input2:-'y'}
                 echo "---> Выполняем: $push_command"
                 eval $push_command  # Выполняем команду push
             else
-                echo "\033[32mКоманда push не выполнена. Завершение скрипта."
+                echo "\033[32mКоманда push не выполнена. Завершение скрипта.\033[0m"
             fi
         else
-            echo "\033[32mПроизошла другая ошибка при выполнении git push."
+            echo "\033[32mПроизошла другая ошибка при выполнении git push.\033[0m"
         fi 
     else 
         echo "Команда git завершена успешно!"
@@ -103,9 +103,9 @@ user_input2=${user_input2:-'y'}
 
     read -p "---> Хотите выполнить следующую команду: git checkout DEV и git pull? (y/n): " user_input
         if [[ $user_input == "y" || $user_input == "Y" ]]; then
-            echo "\033[33m---> Сейчас будем Прыгать на DEV и Пуллится"
+            echo "\033[33m---> Сейчас будем Прыгать на DEV и Пуллится\033[0m"
             sleep 3  # Задержка на 3 секунду
-            echo "\033[33m---> Выполняем: git checkout DEV"
+            echo "\033[33m---> Выполняем: git checkout DEV\033[0m"
             git checkout DEV
             sleep 1  # Задержка на 3 секунду
             git pull --all

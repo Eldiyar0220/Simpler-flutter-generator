@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Released]
 
+### 1.3.1
+ - added code lens update to new version 
+ - changed the Extension Icon
+
 ### 1.2.8
  - Changed template of Generate Assets 
  - removed outputPath to generateAll by default false, if generateAll true so will ask the modal dialog

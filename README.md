@@ -596,6 +596,9 @@ groups:
    
 ```
 
+### 1.3.1
+ - added code lens update to new version 
+ - changed the Extension Icon
 ### 1.2.7
  - removed emoticons on context menu 
   - editor/context

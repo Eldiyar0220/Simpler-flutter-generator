@@ -548,6 +548,16 @@ generate:
 
 ```
 
+
+### 1.3.2
+ - fixed pubSpec update with + camera: ^0.10.0+1 update camera: ^0.11.0+2 ✅
+ - removed update button from packages with git
+ - removed text [latest] 
+ 
+### 1.3.1
+ - added code lens update to new version 
+ - changed the Extension Icon
+
 ### 1.2.8
  - Changed template of Generate Assets 
  - removed outputPath to generateAll by default false, if generateAll true so will ask the modal dialog
@@ -595,10 +605,6 @@ groups:
   #   warnings: true
    
 ```
-
-### 1.3.1
- - added code lens update to new version 
- - changed the Extension Icon
 ### 1.2.7
  - removed emoticons on context menu 
   - editor/context

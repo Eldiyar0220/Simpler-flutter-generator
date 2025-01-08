@@ -6,6 +6,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Released]
 
+
+### 1.3.2
+ - fixed pubSpec update with + camera: ^0.10.0+1 update camera: ^0.11.0+2 ✅
+ - removed update button from packages with git
+ - removed text [latest] 
+ 
 ### 1.3.1
  - added code lens update to new version 
  - changed the Extension Icon

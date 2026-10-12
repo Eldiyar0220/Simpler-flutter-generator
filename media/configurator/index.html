@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<!--CSP-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Architecture Studio</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="app">
+		<header class="top">
+			<div class="brand">
+				<button type="button" class="btn ghost" id="back-menu">Меню</button>
+				<div class="logo" aria-hidden="true">SF</div>
+				<div>
+					<h1>Architecture Studio</h1>
+					<p class="sub">Слои, Use Bloc или Use Cubit и yaml фичи.</p>
+				</div>
+			</div>
+			<div class="actions">
+				<button type="button" class="btn ghost" id="import-yaml">Импорт</button>
+				<button type="button" class="btn ghost" id="export-yaml">Экспорт</button>
+				<button type="button" class="btn solid vscode-only" id="save-yaml">Записать yaml</button>
+			</div>
+		</header>
+		<div class="layout" id="layout">
+			<aside class="pane settings" id="settings"></aside>
+			<main class="pane structure">
+				<div class="structure-top">
+					<h2>Структура</h2>
+					<button type="button" class="btn tiny" id="toggle-structure" aria-pressed="false">На весь</button>
+				</div>
+				<div class="guide">
+							<p class="warn-line">Раздел крестиком удаляется только после вопроса. Папку и файл, которые только что создали, можно убрать крестиком без вопроса в первые 5 секунд. Потом тоже спросит.</p>
+							<p><strong>+ раздел</strong> создаёт верхнюю папку, например data. <strong>+ папка</strong> создаёт папку внутри этой строки. <strong>+ файл</strong> создаёт dart-файл в ней. <strong>код</strong> открывает текст файла.</p>
+							<p>При генерации расширение спросит имя фичи. Если ввести <code>pay_login</code>:</p>
+							<ul>
+								<li>в имени папки и файла <code>NAME</code> остаётся как ввели: <code>NAME_page.dart</code> станет <code>pay_login_page.dart</code></li>
+								<li>в коде файла <code>NAME</code> становится именем класса: <code>class NAMEPage</code> станет <code>class PayLoginPage</code></li>
+								<li><code>LOWER_CASE</code> в коде — <code>pay_login</code>, для part и путей</li>
+								<li><code>funcCase</code> в коде — <code>payLogin</code>, для имени функции</li>
+							</ul>
+				</div>
+				<div class="tools">
+					<button type="button" class="btn tiny ghost" id="toggle-tree" aria-pressed="false">Развернуть</button>
+					<button type="button" class="btn tiny" id="add-category">+ раздел</button>
+				</div>
+				<div id="banner"></div>
+				<div id="tree"></div>
+				<section id="editor" hidden>
+					<div class="editor-head">
+						<div class="editor-path" id="editor-path"></div>
+						<button type="button" class="btn tiny ghost" id="editor-close">Закрыть</button>
+					</div>
+					<textarea id="editor-code" spellcheck="false" aria-label="Код файла"></textarea>
+				</section>
+			</main>
+			<aside class="pane preview" id="yaml-pane">
+				<div class="pane-head">
+					<h2>simpler_generator_folders.yaml</h2>
+					<button type="button" class="btn tiny" id="toggle-yaml" aria-expanded="true" aria-label="Скрыть yaml">Скрыть</button>
+				</div>
+				<pre id="yaml"></pre>
+			</aside>
+		</div>
+	</div>
+	<script src="app.js"></script>
+</body>
+</html>

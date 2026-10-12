@@ -1,0 +1,282 @@
+# **************************************************************************
+# * ArchitectureGenerator - Simpler Flutter Generator - MVVM
+# **************************************************************************
+#
+# Имя фичи спрашивается при генерации. Пример: pay_login
+#
+# Папка и файл: NAME в имени заменяется на pay_login
+#   NAME_page.dart -> pay_login_page.dart
+#   folder: NAME   -> pay_login
+#
+# Код файла:
+#   NAME        -> PayLogin     class NAMEPage -> class PayLoginPage
+#   LOWER_CASE  -> pay_login    part и пути
+#   funcCase    -> payLogin     имя функции
+#
+# + раздел  верхняя папка (data, domain, presentation)
+# + папка   папка внутри выбранной строки
+# + файл    dart-файл в этой папке
+# код       текст файла, его и подставляют плейсхолдеры
+
+dataSource: false
+
+dataModel: false
+
+dataRepository: false
+
+entityModel: false
+
+domainRepository: false
+
+usecase: false
+
+stateWidget: false
+
+# ----MVVM clean architecture----------------------------------> start
+generate:
+  - category: data
+    contents:
+      - folder: data_sources
+        contents:
+          - file: NAME_remote_data_source.dart
+            code: |
+              abstract class NAMERemoteDataSource {
+                Future<NAMEModel> fetch();
+              }
+              
+              class NAMERemoteDataSourceImpl implements NAMERemoteDataSource {
+                @override
+                Future<NAMEModel> fetch() async {
+                  // final response = await dio.get('/LOWER_CASE');
+                  return const NAMEModel();
+                }
+              }
+          - file: NAME_local_data_source.dart
+            code: |
+              abstract class NAMELocalDataSource {
+                Future<NAMEModel?> read();
+              
+                Future<void> write(NAMEModel model);
+              }
+              
+              class NAMELocalDataSourceImpl implements NAMELocalDataSource {
+                NAMEModel? _cache;
+              
+                @override
+                Future<NAMEModel?> read() async {
+                  return _cache;
+                }
+              
+                @override
+                Future<void> write(NAMEModel model) async {
+                  _cache = model;
+                }
+              }
+      - folder: models
+        contents:
+          - file: NAME_model.dart
+            code: |
+              class NAMEModel {
+                const NAMEModel({
+                  this.id,
+                  this.title,
+                });
+              
+                final String? id;
+                final String? title;
+              
+                factory NAMEModel.fromJson(Map<String, dynamic> json) {
+                  return NAMEModel(
+                    id: json['id'] as String?,
+                    title: json['title'] as String?,
+                  );
+                }
+              
+                Map<String, dynamic> toJson() {
+                  return {
+                    'id': id,
+                    'title': title,
+                  };
+                }
+              
+                NAMEEntity toEntity() {
+                  return NAMEEntity(
+                    id: id,
+                    title: title,
+                  );
+                }
+              
+                factory NAMEModel.fromEntity(NAMEEntity entity) {
+                  return NAMEModel(
+                    id: entity.id,
+                    title: entity.title,
+                  );
+                }
+              }
+      - folder: repositories
+        contents:
+          - file: NAME_repository_impl.dart
+            code: |
+              class NAMERepositoryImpl implements NAMERepository {
+                NAMERepositoryImpl({
+                  required this.remote,
+                  required this.local,
+                });
+              
+                final NAMERemoteDataSource remote;
+                final NAMELocalDataSource local;
+              
+                @override
+                Future<NAMEEntity> getNAME() async {
+                  try {
+                    final model = await remote.fetch();
+                    await local.write(model);
+                    return model.toEntity();
+                  } catch (_) {
+                    final cached = await local.read();
+                    if (cached != null) {
+                      return cached.toEntity();
+                    }
+                    rethrow;
+                  }
+                }
+              }
+  - category: domain
+    contents:
+      - folder: entities
+        contents:
+          - file: NAME_entity.dart
+            code: |
+              class NAMEEntity {
+                const NAMEEntity({
+                  this.id,
+                  this.title,
+                });
+              
+                final String? id;
+                final String? title;
+              }
+      - folder: repositories
+        contents:
+          - file: NAME_repository.dart
+            code: |
+              abstract class NAMERepository {
+                Future<NAMEEntity> getNAME();
+              }
+      - folder: usecases
+        contents:
+          - file: NAME_usecase.dart
+            code: |
+              class NAMEUseCase {
+                NAMEUseCase(this.repository);
+              
+                final NAMERepository repository;
+              
+                Future<NAMEEntity> call() {
+                  return repository.getNAME();
+                }
+              }
+  - category: presentation
+    contents:
+      - folder: view_models
+        contents:
+          - file: NAME_view_model.dart
+            code: |
+              import 'package:flutter/foundation.dart';
+              
+              enum NAMEStatus { initial, loading, success, failure }
+              
+              class NAMEViewModel extends ChangeNotifier {
+                NAMEViewModel(this._useCase);
+              
+                final NAMEUseCase _useCase;
+              
+                NAMEStatus status = NAMEStatus.initial;
+                NAMEEntity? entity;
+                Object? error;
+              
+                Future<void> load() async {
+                  status = NAMEStatus.loading;
+                  notifyListeners();
+                  try {
+                    entity = await _useCase.call();
+                    status = NAMEStatus.success;
+                  } catch (error) {
+                    this.error = error;
+                    status = NAMEStatus.failure;
+                  }
+                  notifyListeners();
+                }
+              }
+      - folder: views
+        contents:
+          - file: NAME_view.dart
+            code: |
+              import 'package:flutter/material.dart';
+              
+              class NAMEView extends StatelessWidget {
+                const NAMEView({
+                  super.key,
+                  required this.viewModel,
+                });
+              
+                final NAMEViewModel viewModel;
+              
+                @override
+                Widget build(BuildContext context) {
+                  return ListenableBuilder(
+                    listenable: viewModel,
+                    builder: (context, child) {
+                      switch (viewModel.status) {
+                        case NAMEStatus.loading:
+                          return const Center(child: CircularProgressIndicator());
+                        case NAMEStatus.failure:
+                          return Center(child: Text('${viewModel.error}'));
+                        case NAMEStatus.success:
+                          return Center(child: Text(viewModel.entity?.title ?? 'NAME'));
+                        case NAMEStatus.initial:
+                          return const SizedBox.shrink();
+                      }
+                    },
+                  );
+                }
+              }
+      - folder: pages
+        contents:
+          - file: NAME_page.dart
+            code: |
+              import 'package:flutter/material.dart';
+              
+              class NAMEPage extends StatefulWidget {
+                const NAMEPage({
+                  super.key,
+                  required this.viewModel,
+                });
+              
+                final NAMEViewModel viewModel;
+              
+                @override
+                State<NAMEPage> createState() => _NAMEPageState();
+              }
+              
+              class _NAMEPageState extends State<NAMEPage> {
+                @override
+                void initState() {
+                  super.initState();
+                  widget.viewModel.load();
+                }
+              
+                @override
+                Widget build(BuildContext context) {
+                  return Scaffold(
+                    appBar: AppBar(
+                      title: const Text('NAME'),
+                    ),
+                    body: NAMEView(
+                      viewModel: widget.viewModel,
+                    ),
+                  );
+                }
+              }
+      - folder: widgets
+# ------------------------------------------------------------- end

@@ -1,0 +1,203 @@
+{
+  "name": "simpler-flutter-generator",
+  "displayName": "Simpler Flutter Generator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eldiyar0220/Simpler-flutter-generator"
+  },
+  "icon": "images/simpler_flutter_generator.png",
+  "description": "Simple Creator Flutter Clean Architecture ",
+  "version": "2.0.0",
+  "publisher": "Eldiyar-Dev",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Snippets",
+    "Other",
+    "Programming Languages"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onLanguage:dart",
+    "onLanguage:yaml",
+    "onLanguage:dart-flutter",
+    "onStartupFinished",
+    "workspaceContains:**/pubspec.yaml"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "simpler_flutter_generator.build_runner_with_filter",
+        "title": "1) Build Runner with Filter",
+        "icon": "sync"
+      },
+      {
+        "command": "simpler_flutter_generator.build_runner_with_filter_editor",
+        "title": "1) Build Runner with Filter ... 🔎✅",
+        "icon": "sync"
+      },
+      {
+        "command": "simpler_flutter_generator.generateImages",
+        "title": "2) Generate Assets"
+      },
+      {
+        "command": "simpler_flutter_generator.enableCodeLensCommand",
+        "title": "1) PackageLens Simpler Flutter"
+      },
+      {
+        "command": "simpler_flutter_generator.generateFromYaml",
+        "title": "3) Generate Architecture",
+        "icon": "sync"
+      },
+      {
+        "command": "simpler_flutter_generator.openMenu",
+        "title": "Simpler Flutter",
+        "icon": "home"
+      },
+      {
+        "command": "simpler_flutter_generator.openConfigurator",
+        "title": "4) Architecture Studio",
+        "icon": "settings-gear"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "simpler_flutter_generator.enableCodeLensCommand",
+          "group": "navigation",
+          "when": "editorLangId == yaml && (resourceFilename == 'pubspec.yaml' || resourceLangId == '.yaml')"
+        },
+        {
+          "command": "simpler_flutter_generator.generateImages",
+          "group": "navigation",
+          "when": "editorLangId == dart || editorLangId == yaml"
+        },
+        {
+          "command": "simpler_flutter_generator.build_runner_with_filter_editor",
+          "group": "navigation",
+          "when": "editorLangId == dart"
+        },
+        {
+          "command": "simpler_flutter_generator.openMenu",
+          "group": "navigation",
+          "when": "editorLangId == dart || editorLangId == yaml"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "simpler_flutter_generator.openMenu",
+          "group": "navigation",
+          "when": "editorLangId == dart || editorLangId == yaml"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "simpler_flutter_generator.build_runner_with_filter",
+          "group": "navigation",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "simpler_flutter_generator.generateFromYaml",
+          "group": "navigation",
+          "when": "explorerResourceIsFolder"
+        },
+        {
+          "command": "simpler_flutter_generator.generateImages",
+          "group": "navigation",
+          "when": "explorerResourceIsFolder || filesExplorerFocus"
+        },
+        {
+          "command": "simpler_flutter_generator.openMenu",
+          "group": "navigation"
+        }
+      ],
+      "contextMenu": [
+        {
+          "command": "simpler_flutter_generator.generateImages",
+          "group": "navigation",
+          "when": "editorLangId == dart"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Simpler Flutter Generator",
+      "properties": {
+		"SimplerFlutterGenerator.stateMachine": {
+          "type": "string",
+          "default": "bloc",
+          "enum": [
+            "bloc",
+            "cubit"
+          ],
+          "enumDescriptions": [
+            "Use Bloc",
+            "Use Cubit"
+          ],
+          "description": "Use Bloc or Use Cubit"
+        },
+        "SimplerFlutterGenerator.stateWidget": {
+          "type": "string",
+          "default": "StateLessWidget",
+          "enum": [
+            "StateFullWidget",
+            "StateLessWidget",
+            "Empty"
+          ],
+          "enumDescriptions": [
+            "State -> StateFullWidget",
+            "State -> StateLessWidget",
+            "State -> Empty"
+          ],
+          "description": "Complete type of State Widget"
+        },
+        "SimplerFlutterGenerator.createStateWidget": {
+          "type": "boolean",
+          "default": true,
+          "enum": [
+            true,
+            false
+          ],
+          "enumDescriptions": [
+            "Create Widget -> true",
+            "Create Widget -> false"
+          ],
+          "description": "Complete type of State Widget"
+        },
+        "SimplerFlutterGenerator.enableCodeLens": {
+          "type": "boolean",
+          "default": true,
+          "enum": [
+            true,
+            false
+          ],
+          "enumDescriptions": [
+            "enable -> true",
+            "disable -> false"
+          ],
+          "description": "Complete type of State Widget"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.80.0",
+    "@vscode/test-electron": "^2.3.4",
+    "eslint": "^8.47.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.6",
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "js-yaml": "^4.1.0"
+  }
+}

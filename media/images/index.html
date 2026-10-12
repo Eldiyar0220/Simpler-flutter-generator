@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<!--CSP-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Images Studio</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header class="bar">
+		<div class="brand">
+			<button type="button" class="btn ghost" id="back-menu">Меню</button>
+			<div class="logo" aria-hidden="true">SF</div>
+			<div>
+				<h1>Images Studio</h1>
+				<p>Группы картинок для simpler_generator_images.yaml.</p>
+			</div>
+		</div>
+		<div class="actions">
+			<button type="button" class="btn solid" id="help-examples">Подробнее</button>
+			<button type="button" class="btn ghost" id="reset-preset">Шаблон</button>
+			<button type="button" class="btn ghost" id="copy-yaml">Копировать</button>
+			<button type="button" class="btn ghost" id="download-yaml">Скачать</button>
+			<button type="button" class="btn solid vscode-only" id="save-yaml">Записать yaml</button>
+		</div>
+	</header>
+	<div class="shell">
+		<nav id="nav"></nav>
+		<main>
+			<input id="search" type="search" placeholder="Search settings..." autocomplete="off">
+			<div id="cards"></div>
+		</main>
+		<aside class="preview">
+			<h2>simpler_generator_images.yaml</h2>
+			<pre id="yaml"></pre>
+		</aside>
+	</div>
+	<div id="examples" class="sheet" hidden>
+		<div class="sheet-card" role="dialog" aria-labelledby="examples-title">
+			<div class="sheet-head">
+				<h2 id="examples-title">Примеры</h2>
+				<button type="button" class="btn tiny" id="examples-close">Закрыть</button>
+			</div>
+			<img class="demo" src="demo.gif" alt="Как генератор собирает класс картинок">
+			<p class="warn show">Warning do not put to true both, it will take very long analyze your project!!</p>
+			<p class="warn show">checkUnusedVariables: false и checkUnusedAssets: false. Оба сразу не включай.</p>
+			<p class="warn show">Warnings Empty assets!! Если папка пустая, проверь types: [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]</p>
+			<p class="sheet-note">Несколько папок в одной группе пишутся списком в path.</p>
+			<pre class="sample">## Multiple path
+# - path:
+#     - assets/images
+#     - assets/images/new_images
+#     - assets/images/only_icons
+#   class_name: AppImages
+#   types: [.png, .jpg, .jpeg, .webp, .webm, .bmp, .svg, .gif, .riv, .json]
+#   outputPath: lib/core/constant
+#   warnings: true
+
+# - path:
+#     - assets/svg
+#   class_name: AppSvg
+#   types: [.svg]
+#   outputPath: lib/core/constant
+#   warnings: true</pre>
+		</div>
+	</div>
+	<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+// **************************************************************************
+// * AssetsGenerator - Simpler FLutter Generator Extension -
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+
+class AssetsClass {
+  AssetsClass._();
+  
+__CODE_TEMPLATE_CONTENTS_REPLACEMENT__
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<!--CSP-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Simpler Flutter</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header class="bar">
+		<div class="brand">
+			<div class="logo" aria-hidden="true">
+				<svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5v-13Zm3 2v3h4v-3H7Zm6 0v3h4v-3h-4ZM7 12.5v3h4v-3H7Zm6 0v3h4v-3h-4Z"/></svg>
+			</div>
+			<div>
+				<h1>Simpler Flutter</h1>
+				<p>Главное меню. Отсюда открываются студии.</p>
+			</div>
+		</div>
+	</header>
+	<div class="shell">
+		<nav id="nav">
+			<button type="button" class="nav-item on" data-target="studio">
+				<span>Architecture Studio</span>
+				<em>1/2</em>
+			</button>
+			<button type="button" class="nav-item" data-target="images">
+				<span>Images Studio</span>
+				<em>2/2</em>
+			</button>
+		</nav>
+		<main>
+			<input id="search" type="search" placeholder="Search settings..." autocomplete="off">
+			<section class="block" data-id="studio" data-title="architecture studio">
+				<button type="button" class="block-head" data-command="studio">
+					<div>
+						<strong>Architecture Studio</strong>
+						<em>1/2</em>
+						<p>Слои, Use Bloc или Use Cubit, дерево файлов и yaml.</p>
+					</div>
+				</button>
+			</section>
+			<section class="block" data-id="images" data-title="images studio">
+				<button type="button" class="block-head" data-command="images">
+					<div>
+						<strong>Images Studio</strong>
+						<em>2/2</em>
+						<p>Группы, пути, типы и запись simpler_generator_images.yaml.</p>
+					</div>
+				</button>
+			</section>
+		</main>
+	</div>
+	<script src="app.js"></script>
+</body>
+</html>

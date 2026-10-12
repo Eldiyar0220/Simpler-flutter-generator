@@ -243,20 +243,69 @@ main { padding: 22px 28px 40px; overflow: auto; }
 .switch input:checked + i { background: var(--blue); }
 .switch input:checked + i::after { transform: translateX(18px); }
 
-.field { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
-.field span { font-size: 13px; color: #ddd; }
-.field input, .path-row input {
-	width: 100%;
-	background: #333;
-	border: 0;
-	border-radius: 8px;
-	padding: 8px 10px;
-	outline: none;
+.block .field { display: flex; flex-direction: column; gap: 7px; margin-top: 14px; }
+.block .field > span {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	color: #8ec8ff;
 }
-.field input:focus, .path-row input:focus { box-shadow: 0 0 0 1px var(--blue); }
+.block .field input,
+.block .path-row input {
+	width: 100%;
+	background-color: #121417;
+	border: 1px solid #3c4148;
+	border-radius: 10px;
+	padding: 11px 13px;
+	outline: none;
+	color: #ffffff;
+	-webkit-text-fill-color: #ffffff;
+	font-family: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: 0.01em;
+	caret-color: var(--blue);
+	transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.block .field input:hover,
+.block .path-row input:hover { border-color: #56606b; }
+.block .field input::placeholder,
+.block .path-row input::placeholder { color: #7d8590; -webkit-text-fill-color: #7d8590; }
+.block .field input:focus,
+.block .path-row input:focus {
+	border-color: var(--blue);
+	box-shadow: 0 0 0 3px rgba(26, 140, 255, 0.22);
+	background-color: #0e1013;
+}
 
 .path-row { display: flex; gap: 8px; align-items: center; }
 .paths { display: flex; flex-direction: column; gap: 8px; }
+.block .path-row .btn.danger {
+	width: 36px;
+	height: 36px;
+	flex: none;
+	padding: 0;
+	border-radius: 10px;
+	font-size: 16px;
+	color: var(--danger);
+	background-color: rgba(255, 123, 114, 0.1);
+}
+.block .path-row .btn.danger:hover { background-color: rgba(255, 123, 114, 0.22); }
+.block .path-row .btn.danger:disabled { opacity: 0.35; cursor: default; }
+.block [data-action="add-path"] {
+	padding: 9px 12px;
+	border: 1px dashed rgba(26, 140, 255, 0.55);
+	border-radius: 10px;
+	background-color: rgba(26, 140, 255, 0.08);
+	color: #8ec8ff;
+	font-size: 13px;
+	font-weight: 600;
+}
+.block [data-action="add-path"]:hover {
+	background-color: rgba(26, 140, 255, 0.18);
+	color: #ffffff;
+}
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip {

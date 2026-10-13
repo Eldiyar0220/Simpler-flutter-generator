@@ -1,0 +1,296 @@
+.nav-item--external {
+	position: relative;
+	margin-top: 13px;
+}
+.nav-item--external::before {
+	content: "";
+	position: absolute;
+	top: -7px;
+	left: 10px;
+	right: 10px;
+	height: 1px;
+	background: var(--line);
+}
+
+.block--external {
+	padding: 16px;
+	box-shadow: inset 0 0 0 1px rgba(26, 140, 255, 0.35);
+	transition: background-color 0.2s ease, box-shadow 0.25s ease;
+}
+.block--external:hover,
+.block--external.open { box-shadow: inset 0 0 0 1px rgba(26, 140, 255, 0.6), 0 0 18px rgba(26, 140, 255, 0.12); }
+
+.tasks-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 12px;
+}
+.tasks-head__title {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+.tasks-head strong { font-size: 15px; }
+.tasks-head p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+
+.ext-badge {
+	font-size: 11px;
+	padding: 2px 8px;
+	border-radius: 999px;
+	color: #9fd0ff;
+	background: rgba(26, 140, 255, 0.14);
+	border: 1px solid rgba(26, 140, 255, 0.35);
+}
+
+.tasks-status {
+	flex-shrink: 0;
+	font-size: 12px;
+	padding: 3px 9px;
+	border-radius: 999px;
+	color: var(--muted);
+	background: rgba(255, 255, 255, 0.06);
+}
+.tasks-status--on { color: #7ee2a8; background: rgba(46, 204, 113, 0.12); }
+
+.tasks-notice {
+	margin-top: 14px;
+	padding: 12px 14px;
+	border-radius: 10px;
+	background: rgba(26, 140, 255, 0.07);
+	border: 1px solid rgba(26, 140, 255, 0.2);
+}
+.tasks-notice__title {
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: #9fd0ff;
+	margin-bottom: 8px;
+}
+.tasks-notice__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+.tasks-notice__item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	font-size: 13px;
+	line-height: 1.4;
+}
+.tasks-notice__item > span::before { content: "• "; color: var(--blue); }
+.tasks-notice__footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 12px;
+	padding-top: 10px;
+	border-top: 1px solid var(--line);
+	font-size: 13px;
+	color: var(--muted);
+}
+
+.tasks-chip {
+	flex-shrink: 0;
+	border: 1px solid rgba(26, 140, 255, 0.55);
+	background: rgba(26, 140, 255, 0.16);
+	color: #cfe7ff;
+	border-radius: 999px;
+	padding: 3px 10px;
+	font-size: 12px;
+	cursor: pointer;
+	animation: tasks-chip-breathe 2.8s ease-in-out infinite;
+	transition: background-color 0.18s ease, transform 0.18s ease;
+}
+.tasks-chip:hover { background: rgba(26, 140, 255, 0.32); transform: translateY(-1px); animation: none; }
+.tasks-chip:focus-visible { outline: 1px solid var(--blue); outline-offset: 2px; }
+
+@keyframes tasks-chip-breathe {
+	0%, 100% { box-shadow: 0 0 0 0 rgba(26, 140, 255, 0); }
+	50% { box-shadow: 0 0 0 3px rgba(26, 140, 255, 0.18); }
+}
+
+.tasks-button {
+	border: 0;
+	border-radius: 8px;
+	padding: 7px 14px;
+	background: var(--blue-deep);
+	color: white;
+	cursor: pointer;
+	font-size: 13px;
+}
+.tasks-button:hover { background: var(--blue); }
+.tasks-button--ghost { background: rgba(255, 255, 255, 0.08); }
+.tasks-button--ghost:hover { background: rgba(255, 255, 255, 0.14); }
+
+.tasks-links {
+	margin-top: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+.tasks-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 10px 12px;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.04);
+}
+.tasks-link strong { font-size: 13px; }
+.tasks-link p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+.tasks-link__action {
+	flex-shrink: 0;
+	border: 0;
+	border-radius: 6px;
+	padding: 5px 10px;
+	background: rgba(26, 140, 255, 0.16);
+	color: #9fd0ff;
+	cursor: pointer;
+	font-size: 12px;
+}
+.tasks-link__action:hover { background: rgba(26, 140, 255, 0.3); color: white; }
+
+.tasks-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 10;
+	display: grid;
+	place-items: center;
+	padding: 24px;
+	background: rgba(0, 0, 0, 0.55);
+}
+.tasks-lesson {
+	width: min(680px, 100%);
+	max-height: calc(100vh - 48px);
+	overflow-y: auto;
+	padding: 18px 18px 0;
+	border-radius: 12px;
+	background: var(--card);
+	box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+.tasks-lesson__title { font-size: 15px; font-weight: 650; margin-bottom: 12px; }
+.tasks-lesson__media {
+	position: relative;
+	min-height: 220px;
+	display: grid;
+	place-items: center;
+	border-radius: 10px;
+	overflow: hidden;
+	background: #151515;
+}
+.tasks-lesson__media img { display: block; max-width: 100%; opacity: 0; transition: opacity 0.25s ease; }
+.tasks-lesson__media.is-loaded { min-height: 0; }
+.tasks-lesson__media.is-loaded img { opacity: 1; }
+.tasks-lesson__media.is-loaded .tasks-lesson__spin { display: none; }
+.tasks-lesson__spin {
+	position: absolute;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	border: 3px solid rgba(255, 255, 255, 0.12);
+	border-top-color: var(--blue);
+	animation: tasks-spin 0.9s linear infinite;
+}
+.tasks-lesson__error { color: var(--muted); font-size: 13px; padding: 24px; text-align: center; }
+.tasks-lesson__en { margin: 14px 0 4px; font-size: 13px; line-height: 1.5; }
+.tasks-lesson__ru { margin: 0; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.tasks-lesson__actions {
+	position: sticky;
+	bottom: 0;
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 14px;
+	padding: 12px 0 16px;
+	background: var(--card);
+}
+
+@keyframes tasks-spin { to { transform: rotate(360deg); } }
+
+@keyframes tasks-rise {
+	from { opacity: 0; transform: translateY(8px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+@keyframes tasks-fade {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+@keyframes tasks-pop {
+	from { opacity: 0; transform: translateY(14px) scale(0.96); }
+	to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes tasks-status-glow {
+	0%, 100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+	50% { box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.16); }
+}
+
+.tasks-head,
+.tasks-notice,
+.tasks-notice__item,
+.tasks-link {
+	animation: tasks-rise 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.tasks-notice { animation-delay: 0.06s; }
+.tasks-notice__item:nth-child(1) { animation-delay: 0.12s; }
+.tasks-notice__item:nth-child(2) { animation-delay: 0.17s; }
+.tasks-notice__item:nth-child(3) { animation-delay: 0.22s; }
+.tasks-notice__item:nth-child(4) { animation-delay: 0.27s; }
+.tasks-notice__item:nth-child(5) { animation-delay: 0.32s; }
+.tasks-notice__item:nth-child(6) { animation-delay: 0.37s; }
+.tasks-notice__item:nth-child(7) { animation-delay: 0.42s; }
+.tasks-notice__item:nth-child(n + 8) { animation-delay: 0.47s; }
+.tasks-link:nth-child(1) { animation-delay: 0.5s; }
+.tasks-link:nth-child(2) { animation-delay: 0.56s; }
+.tasks-link:nth-child(n + 3) { animation-delay: 0.62s; }
+
+.tasks-notice__item {
+	margin: 0 -6px;
+	padding: 3px 6px;
+	border-radius: 8px;
+	transition: background-color 0.18s ease, transform 0.18s ease;
+}
+.tasks-notice__item:hover {
+	background: rgba(26, 140, 255, 0.1);
+	transform: translateX(3px);
+}
+
+.tasks-link {
+	transition: background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.tasks-link:hover {
+	background: rgba(255, 255, 255, 0.07);
+	transform: translateY(-1px);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+.tasks-link__action {
+	transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+.tasks-link__action:hover { transform: translateX(2px); }
+.tasks-button { transition: background-color 0.18s ease, transform 0.18s ease; }
+.tasks-button:hover { transform: translateY(-1px); }
+.tasks-button:active,
+.tasks-chip:active,
+.tasks-link__action:active { transform: scale(0.97); }
+
+.tasks-status { transition: color 0.25s ease, background-color 0.25s ease; }
+.tasks-status--on { animation: tasks-status-glow 2.6s ease-in-out infinite; }
+
+.tasks-overlay { animation: tasks-fade 0.2s ease both; }
+.tasks-lesson { animation: tasks-pop 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+	.tasks-chip, .tasks-lesson__spin, .tasks-head, .tasks-notice, .tasks-notice__item,
+	.tasks-link, .tasks-status--on, .tasks-overlay, .tasks-lesson { animation: none; }
+	.tasks-chip, .tasks-lesson__media img, .tasks-notice__item, .tasks-link,
+	.tasks-link__action, .tasks-button, .tasks-status { transition: none; }
+}

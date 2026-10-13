@@ -1,21 +1,42 @@
 {
   "name": "simpler-flutter-generator",
   "displayName": "Simpler Flutter Generator",
+  "description": "Generate Flutter clean architecture features (MVVM, Bloc, Cubit) from yaml and type-safe asset classes. Visual Architecture Studio and Images Studio included.",
+  "version": "2.0.0",
+  "publisher": "Eldiyar-Dev",
+  "license": "MIT",
+  "icon": "images/simpler_flutter_generator.png",
+  "galleryBanner": {
+    "color": "#1a8cff",
+    "theme": "dark"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Eldiyar0220/Simpler-flutter-generator"
   },
-  "icon": "images/simpler_flutter_generator.png",
-  "description": "Simple Creator Flutter Clean Architecture ",
-  "version": "2.0.0",
-  "publisher": "Eldiyar-Dev",
+  "bugs": {
+    "url": "https://github.com/Eldiyar0220/Simpler-flutter-generator/issues"
+  },
+  "homepage": "https://github.com/Eldiyar0220/Simpler-flutter-generator#readme",
   "engines": {
     "vscode": "^1.80.0"
   },
   "categories": [
     "Snippets",
-    "Other",
-    "Programming Languages"
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "flutter",
+    "dart",
+    "clean architecture",
+    "mvvm",
+    "bloc",
+    "cubit",
+    "generator",
+    "assets",
+    "build_runner",
+    "yaml"
   ],
   "main": "./src/extension.js",
   "activationEvents": [
@@ -123,7 +144,7 @@
     "configuration": {
       "title": "Simpler Flutter Generator",
       "properties": {
-		"SimplerFlutterGenerator.stateMachine": {
+        "SimplerFlutterGenerator.stateMachine": {
           "type": "string",
           "default": "bloc",
           "enum": [
@@ -162,7 +183,7 @@
             "Create Widget -> true",
             "Create Widget -> false"
           ],
-          "description": "Complete type of State Widget"
+          "description": "Fill an empty NAME_page.dart / NAME_screen.dart with a State Widget"
         },
         "SimplerFlutterGenerator.enableCodeLens": {
           "type": "boolean",
@@ -175,7 +196,7 @@
             "enable -> true",
             "disable -> false"
           ],
-          "description": "Complete type of State Widget"
+          "description": "Show package version CodeLens in pubspec.yaml"
         }
       }
     }
@@ -183,21 +204,26 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "node ./test/runTest.js"
+    "test": "node ./test/runTest.js",
+    "package": "vsce package",
+    "publish:vsce": "vsce publish",
+    "publish:ovsx": "ovsx publish",
+    "publish:all": "npm run publish:vsce && npm run publish:ovsx"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
     "@types/vscode": "^1.80.0",
     "@vscode/test-electron": "^2.3.4",
+    "@vscode/vsce": "^4.0.0",
     "eslint": "^8.47.0",
     "glob": "^10.3.3",
     "mocha": "^10.2.0",
-    "typescript": "^5.1.6",
-    "vsce": "^2.15.0"
+    "ovsx": "^1.2.0",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
-    "axios": "^1.7.7",
-    "js-yaml": "^4.1.0"
+    "axios": "^1.20.0",
+    "js-yaml": "^4.3.2"
   }
 }

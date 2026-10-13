@@ -1,3 +1,14 @@
+## What's new in 2.0.0
+
+- **Main menu "Simpler Flutter"** — status bar button **GENERATOR**, editor title icon, Explorer context menu or command palette.
+- **Architecture Studio** — edit `simpler_generator_folders.yaml` visually: layers, folders, files and their code, MVVM template, import / export.
+- **Images Studio** — edit `simpler_generator_images.yaml` visually: groups, paths, types and unused checks.
+- **MVVM clean architecture template** — `data` / `domain` / `presentation` with a `ChangeNotifier` view model.
+
+Full list in the [CHANGELOG](CHANGELOG.md).
+
+Install from [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=Eldiyar-Dev.simpler-flutter-generator) (VS Code) or [Open VSX](https://open-vsx.org/extension/Eldiyar-Dev/simpler-flutter-generator) (Cursor, VSCodium).
+
 ### Assets
 ![image](images/assets_image_read_me.png)
 ### Table of Contents
@@ -698,7 +709,7 @@ Initial
 
 ## Requirements
 
-Vscode: ^1.82.0
+VS Code `^1.80.0` or a compatible editor (Cursor, VSCodium)
 
 
 **Enjoy!** 😁

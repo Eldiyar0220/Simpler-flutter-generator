@@ -3,6 +3,7 @@ const { generatorAssets } = require('./features/assets/generate');
 const { buildRunnerWithFilter } = require('./features/build_runner/build_runner');
 const { generateFilesAndFolders } = require('./features/architecture/generate');
 const { openMenu, openConfigurator } = require('./features/configurator/panel');
+const { isTasksInstalled } = require('./features/configurator/tasks');
 
 const folderDialogOptions = {
 	canSelectMany: false,
@@ -65,11 +66,20 @@ function registerCommands(context) {
 	);
 
 	const studioButton = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
-	studioButton.text = '$(home) Simpler Flutter';
-	studioButton.tooltip = 'Главное меню';
+	studioButton.text = '$(home) GENERATOR';
+	studioButton.tooltip = 'Simpler Flutter Generator — главное меню';
 	studioButton.command = 'simpler_flutter_generator.openMenu';
-	studioButton.show();
 	context.subscriptions.push(studioButton);
+
+	const syncStudioButton = () => {
+		if (isTasksInstalled()) {
+			studioButton.hide();
+		} else {
+			studioButton.show();
+		}
+	};
+	syncStudioButton();
+	context.subscriptions.push(vscode.extensions.onDidChange(syncStudioButton));
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('simpler_flutter_generator.generateFromYaml', async (inUri) => {

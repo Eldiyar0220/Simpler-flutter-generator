@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Simpler Flutter</title>
 	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="tasks/tasks.css">
 </head>
 <body>
 	<header class="bar">
@@ -29,6 +30,10 @@
 				<span>Images Studio</span>
 				<em>2/2</em>
 			</button>
+			<button type="button" class="nav-item nav-item--external" data-target="tasks">
+				<span>Simpler Flutter Tasks</span>
+				<em>↗</em>
+			</button>
 		</nav>
 		<main>
 			<input id="search" type="search" placeholder="Search settings..." autocomplete="off">
@@ -50,8 +55,12 @@
 					</div>
 				</button>
 			</section>
+			<section class="block block--external" data-id="tasks" data-title="simpler flutter tasks status bar custom commands build apk ipa flavor git">
+				<div id="tasksCard"></div>
+			</section>
 		</main>
 	</div>
+	<script src="tasks/tasks.js"></script>
 	<script src="app.js"></script>
 </body>
 </html>

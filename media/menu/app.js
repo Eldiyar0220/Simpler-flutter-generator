@@ -1,4 +1,12 @@
 const vscodeApi = acquireVsCodeApi();
+// eslint-disable-next-line no-undef
+const tasksCard = window.createTasksCard({ vscodeApi, root: document.getElementById('tasksCard') });
+
+window.addEventListener('message', (event) => {
+	if (event.data && event.data.type === 'tasksState') {
+		tasksCard.setInstalled(event.data.installed);
+	}
+});
 
 function select(id) {
 	document.querySelectorAll('.nav-item').forEach((item) => {
@@ -24,6 +32,10 @@ document.getElementById('nav').addEventListener('click', (event) => {
 document.querySelector('main').addEventListener('click', (event) => {
 	const command = event.target.closest('[data-command]');
 	if (!command) {
+		const block = event.target.closest('.block');
+		if (block) {
+			select(block.dataset.id);
+		}
 		return;
 	}
 	const block = command.closest('.block');
@@ -43,3 +55,5 @@ document.getElementById('search').addEventListener('input', (event) => {
 		block.classList.toggle('hidden', query.length > 0 && !title.includes(query));
 	});
 });
+
+vscodeApi.postMessage({ type: 'ready' });

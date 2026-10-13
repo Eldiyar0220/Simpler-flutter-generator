@@ -3,6 +3,9 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 const { mvvmTemplate } = require('../architecture/templates/mvvm');
+const { isTasksInstalled, handleTasksMessage } = require('./tasks');
+
+const TASKS_IMAGES_HOST = 'https://raw.githubusercontent.com';
 
 let homePanel;
 let currentPage = 'menu';
@@ -38,12 +41,28 @@ function ensurePanel(context) {
 		}
 	);
 
+	const postTasksState = () => {
+		if (homePanel && currentPage === 'menu') {
+			homePanel.webview.postMessage({ type: 'tasksState', installed: isTasksInstalled() });
+		}
+	};
+	const extensionsListener = vscode.extensions.onDidChange(postTasksState);
+
 	homePanel.onDidDispose(() => {
+		extensionsListener.dispose();
 		homePanel = undefined;
 	});
 
 	homePanel.webview.onDidReceiveMessage(async (message) => {
+		if (await handleTasksMessage(message)) {
+			return;
+		}
+
 		if (message.type === 'ready') {
+			if (currentPage === 'menu') {
+				postTasksState();
+				return;
+			}
 			if (currentPage === 'images') {
 				homePanel.webview.postMessage({
 					type: 'init',
@@ -218,10 +237,15 @@ function showPage(panel, context, page) {
 	const jsUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(mediaDir, 'app.js'));
 	const htmlPath = path.join(context.extensionPath, 'media', folder, 'index.html');
 	const gifUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'images', 'generator_image_gii.gif'));
+	const tasksCssUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(mediaDir, 'tasks', 'tasks.css'));
+	const tasksJsUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(mediaDir, 'tasks', 'tasks.js'));
+	const imgSrc = page === 'menu' ? `${panel.webview.cspSource} ${TASKS_IMAGES_HOST}` : panel.webview.cspSource;
 	panel.title = titles[page] || 'Simpler Flutter';
 	panel.webview.html = fs.readFileSync(htmlPath, 'utf8')
-		.replace('<!--CSP-->', `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src ${panel.webview.cspSource}; style-src ${panel.webview.cspSource}; script-src ${panel.webview.cspSource};">`)
+		.replace('<!--CSP-->', `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src ${imgSrc}; style-src ${panel.webview.cspSource}; script-src ${panel.webview.cspSource};">`)
 		.replace('href="styles.css"', `href="${cssUri}"`)
+		.replace('href="tasks/tasks.css"', `href="${tasksCssUri}"`)
+		.replace('src="tasks/tasks.js"', `src="${tasksJsUri}"`)
 		.replace('src="app.js"', `src="${jsUri}"`)
 		.replace('src="demo.gif"', `src="${gifUri}"`);
 }

@@ -3,7 +3,7 @@ const helperMessage = require('./shared/messages');
 const { registerCommands } = require('./commands');
 const { codeLens } = require('./features/code_lens/code_lens');
 
-const LATEST_VERSION = '2.0.0';
+const LATEST_VERSION = '2.0.1';
 
 function isNewer(latest, current) {
 	const a = String(latest).split('.').map(Number);

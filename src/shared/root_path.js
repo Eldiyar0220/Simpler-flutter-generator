@@ -10,5 +10,11 @@ module.exports = {
     resolve: process.platform === 'win32' ? path.win32.resolve : path.posix.resolve,
     extname: process.platform === 'win32' ? path.win32.extname : path.posix.extname,
     sep: process.platform === 'win32' ? path.win32.sep : path.posix.sep,
-    rootPath: vscode.workspace.workspaceFolders[0].uri.fsPath,
+    get rootPath() {
+        const folder = vscode.workspace.workspaceFolders?.[0];
+        if (!folder) {
+            throw new Error('Open a Flutter project folder first');
+        }
+        return folder.uri.fsPath;
+    },
 };

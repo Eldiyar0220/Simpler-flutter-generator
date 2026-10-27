@@ -2,7 +2,7 @@
   "name": "simpler-flutter-generator",
   "displayName": "Simpler Flutter Generator",
   "description": "Generate Flutter clean architecture features (MVVM, Bloc, Cubit) from yaml and type-safe asset classes. Visual Architecture Studio and Images Studio included.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "publisher": "Eldiyar-Dev",
   "license": "MIT",
   "icon": "images/simpler_flutter_generator.png",
@@ -47,6 +47,30 @@
     "workspaceContains:**/pubspec.yaml"
   ],
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "simpler-flutter-generator",
+          "title": "GENERATOR",
+          "icon": "media/ios_assets.svg"
+        }
+      ]
+    },
+    "views": {
+      "simpler-flutter-generator": [
+        {
+          "id": "simplerFlutterGenerator.home",
+          "name": "Simpler Flutter Generator",
+          "when": "!simplerFlutterGenerator.tasksInstalled"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "simplerFlutterGenerator.home",
+        "contents": "[Открыть меню](command:simpler_flutter_generator.openMenu)"
+      }
+    ],
     "commands": [
       {
         "command": "simpler_flutter_generator.build_runner_with_filter",

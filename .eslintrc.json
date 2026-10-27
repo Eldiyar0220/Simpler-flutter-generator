@@ -2,17 +2,29 @@
 	"env": {
 		"browser": false,
 		"commonjs": true,
-		"es6": true,
+		"es2022": true,
 		"node": true,
 		"mocha": true
 	},
 	"parserOptions": {
-		"ecmaVersion": 2018,
+		"ecmaVersion": 2022,
 		"ecmaFeatures": {
 			"jsx": true
 		},
 		"sourceType": "module"
 	},
+	"overrides": [
+		{
+			"files": ["media/**/*.js"],
+			"env": {
+				"browser": true,
+				"node": false
+			},
+			"globals": {
+				"acquireVsCodeApi": "readonly"
+			}
+		}
+	],
 	"rules": {
 		"no-const-assign": "warn",
 		"no-this-before-super": "warn",

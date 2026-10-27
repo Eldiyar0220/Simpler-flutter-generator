@@ -53,6 +53,26 @@ window.createTasksCard = function createTasksCard({ vscodeApi, root }) {
 	];
 
 	let installed = false;
+	let stateKnown = false;
+	let expanded = null;
+
+	function isExpanded() {
+		return expanded === null ? stateKnown && !installed : expanded;
+	}
+
+	function syncExpanded() {
+		const open = isExpanded();
+		root.classList.toggle('is-collapsed', !open);
+		const head = root.querySelector('.tasks-head');
+		if (head) {
+			head.setAttribute('aria-expanded', String(open));
+		}
+	}
+
+	function toggleExpanded() {
+		expanded = !isExpanded();
+		syncExpanded();
+	}
 
 	function h(tag, attrs, ...children) {
 		const element = document.createElement(tag);
@@ -123,22 +143,38 @@ window.createTasksCard = function createTasksCard({ vscodeApi, root }) {
 
 	function render() {
 		root.replaceChildren(
-			h('div', { class: 'tasks-head' },
+			h('div', {
+				class: 'tasks-head',
+				role: 'button',
+				tabindex: '0',
+				title: 'Открыть / закрыть · Expand / collapse',
+				onclick: toggleExpanded,
+				onkeydown: (event) => {
+					if (event.key === 'Enter' || event.key === ' ') {
+						event.preventDefault();
+						toggleExpanded();
+					}
+				},
+			},
 				h('div', null,
 					h('div', { class: 'tasks-head__title' },
 						h('strong', null, 'Simpler Flutter Tasks'),
 						h('span', { class: 'ext-badge' }, 'Другое расширение · Another extension')),
 					h('p', null, 'Flutter-команды в один клик: статус-бар, меню команд, свои кнопки и сборки.')),
-				h('span', { class: `tasks-status${installed ? ' tasks-status--on' : ''}` },
-					installed ? '✓ Установлено' : 'Не установлено')),
-			h('div', { class: 'tasks-notice' },
-				h('div', { class: 'tasks-notice__title' }, 'Что умеет · What it does'),
-				h('ul', { class: 'tasks-notice__list' }, FEATURES.map(featureItem)),
-				!installed && h('div', { class: 'tasks-notice__footer' },
-					h('span', null, 'Чтобы пользоваться, установите расширение.'),
-					h('button', { type: 'button', class: 'tasks-button', onclick: () => vscodeApi.postMessage({ type: 'openTasksMarketplace' }) },
-						'Установить Simpler Flutter Tasks'))),
-			h('div', { class: 'tasks-links' }, LINKS.map(linkRow)));
+				h('div', { class: 'tasks-head__side' },
+					h('span', { class: `tasks-status${installed ? ' tasks-status--on' : ''}` },
+						installed ? '✓ Установлено' : 'Не установлено'),
+					h('span', { class: 'tasks-chevron', 'aria-hidden': 'true' }))),
+			h('div', { class: 'tasks-body' }, h('div', { class: 'tasks-body__inner' },
+				h('div', { class: 'tasks-notice' },
+					h('div', { class: 'tasks-notice__title' }, 'Что умеет · What it does'),
+					h('ul', { class: 'tasks-notice__list' }, FEATURES.map(featureItem)),
+					!installed && h('div', { class: 'tasks-notice__footer' },
+						h('span', null, 'Чтобы пользоваться, установите расширение.'),
+						h('button', { type: 'button', class: 'tasks-button', onclick: () => vscodeApi.postMessage({ type: 'openTasksMarketplace' }) },
+							'Установить Simpler Flutter Tasks'))),
+				h('div', { class: 'tasks-links' }, LINKS.map(linkRow)))));
+		syncExpanded();
 	}
 
 	render();
@@ -146,6 +182,7 @@ window.createTasksCard = function createTasksCard({ vscodeApi, root }) {
 	return {
 		setInstalled(value) {
 			installed = Boolean(value);
+			stateKnown = true;
 			render();
 		},
 	};

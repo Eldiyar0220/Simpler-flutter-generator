@@ -1,6 +1,6 @@
-## What's new in 2.0.0
+## What's new in 2.0
 
-- **Main menu "Simpler Flutter"** — status bar button **GENERATOR**, editor title icon, Explorer context menu or command palette.
+- **Main menu "Simpler Flutter"** — **GENERATOR** icon in the Activity Bar, editor title icon, Explorer context menu or command palette.
 - **Architecture Studio** — edit `simpler_generator_folders.yaml` visually: layers, folders, files and their code, MVVM template, import / export.
 - **Images Studio** — edit `simpler_generator_images.yaml` visually: groups, paths, types and unused checks.
 - **MVVM clean architecture template** — `data` / `domain` / `presentation` with a `ChangeNotifier` view model.

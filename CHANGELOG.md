@@ -3,6 +3,18 @@
 All notable changes to the "Simpler Flutter Generator" extension are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.0.1] - 2026-10-27
+
+### Changed
+
+- The **GENERATOR** button moved from the status bar to the Activity Bar (left side).
+  Click it to open the main menu. It is still hidden when Simpler Flutter Tasks is installed.
+
+### Fixed
+
+- The extension no longer fails to activate in a window without an open folder.
+  Commands, the main menu and the **GENERATOR** button now work there too.
+
 ## [2.0.0] - 2026-10-13
 
 Big update: visual studios for both yaml files, a ready MVVM clean architecture template
@@ -12,7 +24,7 @@ and a new main menu. Command IDs and yaml keys are unchanged, existing
 ### Added
 
 - **Main menu "Simpler Flutter"** — one place to open the studios.
-  Open it from the status bar button **GENERATOR**, the editor title icon,
+  Open it from the **GENERATOR** button, the editor title icon,
   the Explorer context menu or the command palette (`Simpler Flutter`).
 - **Architecture Studio** — visual editor for `simpler_generator_folders.yaml`
   - tree of layers, folders and files with add / rename / delete

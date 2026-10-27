@@ -65,21 +65,25 @@ function registerCommands(context) {
 		})
 	);
 
-	const studioButton = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
-	studioButton.text = '$(home) GENERATOR';
-	studioButton.tooltip = 'Simpler Flutter Generator — главное меню';
-	studioButton.command = 'simpler_flutter_generator.openMenu';
-	context.subscriptions.push(studioButton);
-
-	const syncStudioButton = () => {
-		if (isTasksInstalled()) {
-			studioButton.hide();
-		} else {
-			studioButton.show();
-		}
+	const syncActivityButton = () => {
+		vscode.commands.executeCommand('setContext', 'simplerFlutterGenerator.tasksInstalled', isTasksInstalled());
 	};
-	syncStudioButton();
-	context.subscriptions.push(vscode.extensions.onDidChange(syncStudioButton));
+	syncActivityButton();
+	context.subscriptions.push(vscode.extensions.onDidChange(syncActivityButton));
+
+	const activityView = vscode.window.createTreeView('simplerFlutterGenerator.home', {
+		treeDataProvider: { getChildren: () => [], getTreeItem: (item) => item },
+	});
+	context.subscriptions.push(activityView);
+	context.subscriptions.push(
+		activityView.onDidChangeVisibility(async ({ visible }) => {
+			if (!visible) {
+				return;
+			}
+			openMenu(context);
+			await vscode.commands.executeCommand('workbench.action.closeSidebar');
+		})
+	);
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('simpler_flutter_generator.generateFromYaml', async (inUri) => {

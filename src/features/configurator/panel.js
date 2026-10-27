@@ -237,6 +237,7 @@ function showPage(panel, context, page) {
 	const jsUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(mediaDir, 'app.js'));
 	const htmlPath = path.join(context.extensionPath, 'media', folder, 'index.html');
 	const gifUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'images', 'generator_image_gii.gif'));
+	const logoUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'images', 'simpler_flutter_generator.png'));
 	const tasksCssUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(mediaDir, 'tasks', 'tasks.css'));
 	const tasksJsUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(mediaDir, 'tasks', 'tasks.js'));
 	const imgSrc = page === 'menu' ? `${panel.webview.cspSource} ${TASKS_IMAGES_HOST}` : panel.webview.cspSource;
@@ -247,7 +248,8 @@ function showPage(panel, context, page) {
 		.replace('href="tasks/tasks.css"', `href="${tasksCssUri}"`)
 		.replace('src="tasks/tasks.js"', `src="${tasksJsUri}"`)
 		.replace('src="app.js"', `src="${jsUri}"`)
-		.replace('src="demo.gif"', `src="${gifUri}"`);
+		.replace('src="demo.gif"', `src="${gifUri}"`)
+		.replace('src="logo.png"', `src="${logoUri}"`);
 }
 
 function readSettings() {
